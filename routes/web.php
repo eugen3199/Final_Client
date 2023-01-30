@@ -17,10 +17,11 @@ use App\Http\Controllers\EmployeeController;
 
 // Public Routes
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home/dashboard');
 });
 
 Route::get('/login', function(){
+    // if(Session::)
     return view('login');
 });
 
@@ -29,6 +30,7 @@ Route::post('/login/submit', [TestController::class, 'login']);
 Route::get('/dashboard', [TestController::class, 'index']);
 
 Route::resource('/dashboard/employees', EmployeeController::class);
+
 //Private Routes
 // Route::group(['prefix'=>'/dashboard'], function(){
 //     Route::resource('employees', EmployeeController::class);
