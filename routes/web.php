@@ -14,6 +14,7 @@ use App\Http\Controllers\TestController;
 |
 */
 
+// Public Routes
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,3 +24,10 @@ Route::get('/login', function(){
 });
 
 Route::post('/login/submit', [TestController::class, 'login']);
+
+Route::get('/dashboard', [TestController::class, 'index']);
+
+//Private Routes
+Route::group(['prefix'=>'accounts','as'=>'account.'], function(){
+
+});
