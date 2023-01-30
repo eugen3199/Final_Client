@@ -24,8 +24,6 @@ class TestController extends Controller
             "headers" => $headers
         ]);
         $response = $client->request('POST', "/api/login?email=".$fields['email']."&password=".$fields['password']);
-        // return dd($response->getBody());
-        // $result = json_decode($response,true);
         $contents = json_decode($response->getBody());
         var_dump($contents);
         Session::put('key', $contents->token);
@@ -35,7 +33,6 @@ class TestController extends Controller
     {
         $headers = [
             'Accept' => 'application/json',
-            // 'AccessToken' => ,
             'Authorization' => 'Bearer '.Session::get('key'),
         ];
 
