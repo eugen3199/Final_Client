@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\EmployeeController;
 
 // Public Routes
 Route::get('/', function () {
-    return redirect('/home/dashboard');
+    return redirect('/dashboard');
 });
 
 Route::get('/login', function(){
@@ -25,9 +26,11 @@ Route::get('/login', function(){
     return view('login');
 });
 
-Route::post('/login/submit', [TestController::class, 'login']);
+Route::post('/login/submit', [AuthController::class, 'login']);
 
-Route::get('/dashboard', [TestController::class, 'index']);
+Route::get('/dashboard', function(){
+    return view('dashboard');
+});
 
 Route::resource('/dashboard/employees', EmployeeController::class);
 

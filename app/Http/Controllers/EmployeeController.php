@@ -23,6 +23,7 @@ class EmployeeController extends Controller
         $response = $client->request('GET', '/api/employees');
         $contents = json_decode($response->getBody());
         var_dump($contents);
+        return view('employees', $contents);
     }
 
     public function store(Request $request)
@@ -49,7 +50,8 @@ class EmployeeController extends Controller
         ]);
         $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empJoinDate']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1");
         $contents = json_decode($response->getBody());
-        var_dump($contents);
+        // var_dump($contents);
+        return redirect('/dashboard');
     }
 
     public function show()

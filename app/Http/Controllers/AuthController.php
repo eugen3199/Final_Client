@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 
-class TestController extends Controller
+class AuthController extends Controller
 {
     public function login(Request $request)
     {
@@ -29,23 +29,4 @@ class TestController extends Controller
         Session::put('key', $contents->token);
         return redirect('/dashboard');
     }
-
-    public function index()
-    {
-        $headers = [
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer '.Session::get('key'),
-        ];
-
-        $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
-            "headers" => $headers
-        ]);
-
-        // $response = $client->get("api/employees");
-        $response = $client->request('GET', '/api/employees');
-        $contents = json_decode($response->getBody());
-        var_dump($contents);
-    }
-    
 }

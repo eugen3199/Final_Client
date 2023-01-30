@@ -8,7 +8,8 @@
 	</title>
 </head>
 <body>
-	<table>
+	<h1 align="center">Login</h1>
+	<table align="center" border="1">
 		<form method="post" action="/login/submit">
 			@csrf
 			<tr>
@@ -31,9 +32,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="submit" name="login">
-				</td>
+				<th colspan="2">
+					<input type="submit" name="login" value="submit">
+				</th>
 			</tr>
 		</form>
 	</table>
