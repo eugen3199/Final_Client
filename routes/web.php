@@ -31,9 +31,18 @@ Route::post('/login/submit', [AuthController::class, 'login']);
 Route::get('/dashboard', function(){
     return view('dashboard');
 });
+Route::prefix('public')->group(function () {
+    Route::get('employee/{empCardID}', [EmployeeController::class, 'qrshow']);
+});
+
 
 Route::resource('/dashboard/employees', EmployeeController::class);
 
+// Route::get('/dashboard/employees/{id}', function(){
+//     return view('dashboard');
+// });
+// Route::get('/dashboard/employees', [EmployeeController::class, 'index']);
+// Route::post('/dashboard/employees', [EmployeeController::class, 'store']);
 //Private Routes
 // Route::group(['prefix'=>'/dashboard'], function(){
 //     Route::resource('employees', EmployeeController::class);

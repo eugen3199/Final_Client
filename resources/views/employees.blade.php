@@ -8,18 +8,18 @@
 </head>
 <body>
     <h1>
-        Employees
+        <u>Employee</u>
     </h1>
     <ul>
-        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/dashboard/employees">Employees</a></li>
         <li><a href="/dashboard/empdata">Employee Related Data</a></li>
         <li><a href="/dashboard/student">Students</a></li>
         <li><a href="/dashboard/studdata">Student Related Data</a></li>
         <li><a href="/dashboard/users">Users</a></li>
     </ul>
-
-    <form action="/dashboard/employees" method="post">
+    <hr>
+    <form action="{{ route('employees.store') }}" method="post">
         @csrf
         <table>
             <tr>
@@ -40,6 +40,10 @@
                 <td><input type="text" name="empNRC"></td>
             </tr>
             <tr>
+                <td>Join Date</td>
+                <td><input type="text" name="empJoinDate"></td>
+            </tr>
+            <tr>
                 <td>Phone No.</td>
                 <td><input type="text" name="empPhone"></td>
             </tr>
@@ -56,7 +60,7 @@
             <tr>
                 <td>Department</td>
                 <td>
-                    <select name="empCampusID">
+                    <select name="empDeptID">
                         <option value="1">IT</option>
                         <option value="2">Admin</option>
                         <option value="3">HR</option>
@@ -66,7 +70,7 @@
             <tr>
                 <td>Position</td>
                 <td>
-                    <select name="empCampusID">
+                    <select name="empPosID">
                         <option value="1">Associate</option>
                         <option value="2">Senior Associate</option>
                         <option value="3">Manager</option>
@@ -81,9 +85,13 @@
                 <td>Emergency Contact Phone No.</td>
                 <td><input type="text" name="empEmgcPhone"></td>
             </tr>
+            <tr>
+                <th colspan="2"><input type="submit" name="submit" value="Submit"></th>
+            </tr>
         </table>
     </form>
-    <table>
+    <hr>
+    <table border="1">
         <tr>
             <td>
                 id
@@ -95,19 +103,21 @@
                 Config
             </td>
         </tr>
-
+        @foreach ($contents as $employee)
         <tr>
             <td>
-                
+                {{ $employee->empCardID }}
             </td>
             <td>
-                
+                {{ $employee->empName }}
             </td>
             <td>
-                
+                <a href="{{ route('employees.show', $employee->id) }}">Details</a>|<a href="{{ route('employees.destroy', $employee->id) }}">Delete</a>
             </td>
+            
         </tr>
-
+        @endforeach
     </table>
+    
 </body>
 </html>
