@@ -17,7 +17,7 @@ use App\Http\Controllers\EmployeeController;
 
 // Public Routes
 Route::get('/', function () {
-    return redirect('/home/dashboard');
+    return redirect('/dashboard');
 });
 
 Route::get('/login', function(){
