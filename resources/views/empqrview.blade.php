@@ -51,14 +51,7 @@
                 {{ $content->empNRC }}
             </td>
         </tr>
-        <tr>
-            <td>
-                Employee Phone no.
-            </td>
-            <td>
-                {{ $content->empPhone }}
-            </td>
-        </tr>
+        
         <tr>
             <td>
                 Employee Join Date
