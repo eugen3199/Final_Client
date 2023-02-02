@@ -51,13 +51,29 @@ class EmployeeController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_url" => "https://e8e93ab2-2d21-41c6-b2f3-edaee7eed2a7.mock.pstmn.io",
             "headers" => $headers
         ]);
         
-        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empImage=".$fields['empImage']
+        // $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empImage=".$fields['empImage']
         // ['body' => $request->empImage]
-    );
+        // );
+        $response = $client->request('POST', "/employees", [
+            'form_params' => [
+                'empName'=>$fields['empName'],
+                'empCardID'=>$fields['empCardID'],
+                'empPosID'=>$fields['empName'],
+                'empDeptID'=>$fields['empPosID'],
+                'empJoinDate'=>$fields['empDeptID'],
+                'empNRC'=>$fields['empNRC'],
+                'empPhone'=>$fields['empPhone'],
+                'empEmgcPerson'=>$fields['empEmgcPerson'],
+                'empEmgcPhone'=>$fields['empEmgcPhone'],
+                'empCampusID'=>$fields['empCampusID'],
+                'empImage' => $fields['empImage'],
+            ],
+        ]);
         $contents = json_decode($response->getBody());
         
         return redirect('/dashboard/employees');
