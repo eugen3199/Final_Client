@@ -7,16 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        @foreach ($contents as $content)
-            {{ $content->empName }}'s Profile
-        @endforeach
-    </h1>
     <hr>
     <table border="1">
         @foreach ($contents as $content)
         <tr>
-            <th colspan="2">QR Code<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
+            <th colspan="2">{{ $content->empName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
         </tr>
         <tr>
             <td>
