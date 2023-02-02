@@ -8,7 +8,9 @@
 </head>
 <body>
     <h1>
-        {{ $content->empName }}'s Profile
+        @foreach ($contents as $content)
+            {{ $content->empName }}'s Profile
+        @endforeach
     </h1>
     <hr>
     <table border="1">
