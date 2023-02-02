@@ -16,7 +16,8 @@ class EmployeeController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
 
@@ -29,6 +30,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
+        // var_dump($request);
         $fields = $request->validate([
             'empName'=>'required',
             'empCardID'=>'required',
@@ -39,10 +41,17 @@ class EmployeeController extends Controller
             'empPhone'=>'required',
             'empEmgcPerson'=>'required',
             'empEmgcPhone'=>'required',
-            'empCampusID'=>'required'
+            'empCampusID'=>'required',
+            // 'empImage' => 'required'
         ]);
 
-        // var_dump($fields);
+        // Store Image
+        // $imageName = 'temp.'.$request->empImage->extension();
+
+        // Public Folder
+        // $request->empImage->move(public_path('/tmp'), $imageName);
+
+        // // var_dump($fields);
 
         $headers = [
             'Accept' => 'application/json',
@@ -50,18 +59,22 @@ class EmployeeController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://cdae9772-5646-4692-9a84-a96ed727de20.mock.pstmn.io",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
+        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+        $empKey = substr(str_shuffle($data), 0, 30);
+        // var_dump($empKey);
+        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empkey=".$empKey);
         
-        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1");
         $contents = json_decode($response->getBody());
-        
+
         return redirect('/dashboard/employees');
-        
     }
 
-    public function show($id)
+    public function show($id, Request $request)
     {
         // $employee = Employees::find($id);
         // if ($employee == Null){
@@ -76,7 +89,8 @@ class EmployeeController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
         
@@ -106,18 +120,19 @@ class EmployeeController extends Controller
     //     }
     // }
 
-    public function qrshow($empCardID)
+    public function qrshow($empCardID, Request $request)
     {
         $headers = [
             'Accept' => 'application/json',
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
         
-        $response = $client->request('GET', "/api/employees/search/".$empCardID);
+        $response = $client->request('GET', "/api/employees/search/".$empCardID."?empKey=".$request->empKey);
         $contents = json_decode($response->getBody());
 
         return view('empqrview', compact('contents'));
