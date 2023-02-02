@@ -29,6 +29,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
+        // var_dump($request);
         $fields = $request->validate([
             'empName'=>'required',
             'empCardID'=>'required',
@@ -40,10 +41,16 @@ class EmployeeController extends Controller
             'empEmgcPerson'=>'required',
             'empEmgcPhone'=>'required',
             'empCampusID'=>'required',
-            'empImage' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+            'empImage' => 'required'
         ]);
 
-        // var_dump($fields);
+        // Store Image
+        $imageName = 'temp.'.$request->empImage->extension();
+
+        // Public Folder
+        $request->empImage->move(public_path('/tmp'), $imageName);
+
+        // // var_dump($fields);
 
         $headers = [
             'Accept' => 'application/json',
@@ -52,32 +59,74 @@ class EmployeeController extends Controller
 
         $client = new Client([
             // "base_uri" => "https://idserver.kbtc.edu.mm",
-            "base_url" => "https://e8e93ab2-2d21-41c6-b2f3-edaee7eed2a7.mock.pstmn.io",
+            "base_uri" => "https://cdae9772-5646-4692-9a84-a96ed727de20.mock.pstmn.io",
             "headers" => $headers
         ]);
         
         // $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empImage=".$fields['empImage']
         // ['body' => $request->empImage]
         // );
-        $response = $client->request('POST', "/employees", [
-            'form_params' => [
-                'empName'=>$fields['empName'],
-                'empCardID'=>$fields['empCardID'],
-                'empPosID'=>$fields['empName'],
-                'empDeptID'=>$fields['empPosID'],
-                'empJoinDate'=>$fields['empDeptID'],
-                'empNRC'=>$fields['empNRC'],
-                'empPhone'=>$fields['empPhone'],
-                'empEmgcPerson'=>$fields['empEmgcPerson'],
-                'empEmgcPhone'=>$fields['empEmgcPhone'],
-                'empCampusID'=>$fields['empCampusID'],
-                'empImage' => $fields['empImage'],
-            ],
-        ]);
-        $contents = json_decode($response->getBody());
+        // $response = $client->request('POST', "/api/employees", [
+        //     'form_params' => [
+        //         'empName'=>$fields['empName'],
+        //         'empCardID'=>$fields['empCardID'],
+        //         'empPosID'=>$fields['empName'],
+        //         'empDeptID'=>$fields['empPosID'],
+        //         'empJoinDate'=>$fields['empDeptID'],
+        //         'empNRC'=>$fields['empNRC'],
+        //         'empPhone'=>$fields['empPhone'],
+        //         'empEmgcPerson'=>$fields['empEmgcPerson'],
+        //         'empEmgcPhone'=>$fields['empEmgcPhone'],
+        //         'empCampusID'=>$fields['empCampusID'],
+        //     ],
+        //     'body' => [
+        //         'empImage' => $fields['empImage'],
+        //     ],
+        //     'multipart' => [
+        //         [
+        //             'name'     => 'empImage',
+        //             'contents' => file_get_contents(public_path('/tmp').$imageName),
+        //             'filename' => $imageName
+        //         ],
+        //     ],
+        // ]);
+        // $contents = json_decode($response->getBody());
         
+        // return redirect('/dashboard/employees');
+
+        Try {
+            $response = $client->post(
+                '/api/employees', [
+                    'multipart' => [
+                        [
+                            'name'     => 'empImage',
+                            'contents' => file_get_contents($media->getPath()),
+                        ],
+                        [
+                            'empName'=>$fields['empName'],
+                            'empCardID'=>$fields['empCardID'],
+                            'empPosID'=>$fields['empName'],
+                            'empDeptID'=>$fields['empPosID'],
+                            'empJoinDate'=>$fields['empDeptID'],
+                            'empNRC'=>$fields['empNRC'],
+                            'empPhone'=>$fields['empPhone'],
+                            'empEmgcPerson'=>$fields['empEmgcPerson'],
+                            'empEmgcPhone'=>$fields['empEmgcPhone'],
+                            'empCampusID'=>$fields['empCampusID'],
+                        ],
+                    ],
+                ],
+            );
+            $contents = json_decode($response->getBody());
+        } catch(\Exception $e) {
+            echo $e->getMessage();
+            $response = $e->getResponse();
+            $responseBody = $response->getBody()->getContents();
+
+            echo $responseBody;
+            exit;
+        }
         return redirect('/dashboard/employees');
-        
     }
 
     public function show($id)

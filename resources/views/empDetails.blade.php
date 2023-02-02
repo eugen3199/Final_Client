@@ -24,6 +24,9 @@
     <hr>
     <table>
         <tr>
+            <th colspan="2">{{ $contents->empName }}'s Profile<br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQotrbW-vxBRCZIOODdVJZ5NTaTjOnFveV500Dve9g&s"></th>
+        </tr>
+        <tr>
             <td>
                 Employee Card ID
             </td>
