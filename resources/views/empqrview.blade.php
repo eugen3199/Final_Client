@@ -11,7 +11,7 @@
     <table border="1">
         @foreach ($contents as $content)
         <tr>
-            <th colspan="2">{{ $content->empName }}'s Profile<br><img src="https://idserver.kbtc.edu.mm/qrcodes/{{ $content->empCardID }}.png"></th>
+            <th colspan="2">{{ $content->empName }}'s Profile<br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQotrbW-vxBRCZIOODdVJZ5NTaTjOnFveV500Dve9g&s"></th>
         </tr>
         <tr>
             <td>
