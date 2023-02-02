@@ -39,7 +39,8 @@ class EmployeeController extends Controller
             'empPhone'=>'required',
             'empEmgcPerson'=>'required',
             'empEmgcPhone'=>'required',
-            'empCampusID'=>'required'
+            'empCampusID'=>'required',
+            'empImage' => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
         // var_dump($fields);
