@@ -8,19 +8,8 @@
 </head>
 <body>
     <h1>
-        Dashboard
+        {{ $content->empName }}'s Profile
     </h1>
-
-    <a href="login">Login</a> | <a href="logout">Logout</a>
-
-    <ul>
-        <li><a href="dashboard">Dashboard</a></li>
-        <li><a href="/dashboard/employees">Employees</a></li>
-        <li><a href="/dashboard/empdata">Employee Related Data</a></li>
-        <li><a href="/dashboard/student">Students</a></li>
-        <li><a href="/dashboard/studdata">Student Related Data</a></li>
-        <li><a href="/dashboard/users">Users</a></li>
-    </ul>
     <hr>
     <table border="1">
         @foreach ($contents as $content)
