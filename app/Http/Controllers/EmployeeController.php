@@ -21,7 +21,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/employees');
+        $response = $client->request('GET', '/api/employees?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // var_dump($contents);
         return view('employees', compact('contents'));
@@ -94,7 +94,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
         
-        $response = $client->request('GET', "/api/employees/".$id);
+        $response = $client->request('GET', "/api/employees/".$id.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // return redirect('/dashboard/employees/$id');
         return view('empDetails', compact('contents'));

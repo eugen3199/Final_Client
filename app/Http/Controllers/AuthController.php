@@ -24,7 +24,7 @@ class AuthController extends Controller
             // "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
-        $response = $client->request('POST', "/api/login?email=".$fields['email']."&password=".$fields['password']);
+        $response = $client->request('POST', "/api/login?email=".$fields['email']."&password=".$fields['password'].'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         var_dump($contents);
         Session::put('key', $contents->token);
