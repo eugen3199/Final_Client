@@ -20,7 +20,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/employees');
+        $response = $client->request('GET', '/api/employees?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // var_dump($contents);
         return view('employees', compact('contents'));
@@ -54,7 +54,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
         
-        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1");
+        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1".'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         
         return redirect('/dashboard/employees');
@@ -80,7 +80,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
         
-        $response = $client->request('GET', "/api/employees/".$id);
+        $response = $client->request('GET', "/api/employees/".$id.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // return redirect('/dashboard/employees/$id');
         return view('empDetails', compact('contents'));
@@ -117,7 +117,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
         
-        $response = $client->request('GET', "/api/employees/search/".$empCardID);
+        $response = $client->request('GET', "/api/employees/search/".$empCardID.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
         return view('empqrview', compact('contents'));
