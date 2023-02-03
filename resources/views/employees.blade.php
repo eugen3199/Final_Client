@@ -86,6 +86,10 @@
                 <td><input type="text" name="empEmgcPhone"></td>
             </tr>
             <tr>
+                <td>Upload Profile Image</td>
+                <td><input type="file" name="empImage"></td>
+            </tr>
+            <tr>
                 <th colspan="2"><input type="submit" name="submit" value="Submit"></th>
             </tr>
         </table>

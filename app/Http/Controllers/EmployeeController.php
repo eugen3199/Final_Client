@@ -29,6 +29,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
+        // var_dump($request);
         $fields = $request->validate([
             'empName'=>'required',
             'empCardID'=>'required',
@@ -39,10 +40,17 @@ class EmployeeController extends Controller
             'empPhone'=>'required',
             'empEmgcPerson'=>'required',
             'empEmgcPhone'=>'required',
-            'empCampusID'=>'required'
+            'empCampusID'=>'required',
+            'empImage' => 'required'
         ]);
 
-        // var_dump($fields);
+        // Store Image
+        $imageName = 'temp.'.$request->empImage->extension();
+
+        // Public Folder
+        $request->empImage->move(public_path('/tmp'), $imageName);
+
+        // // var_dump($fields);
 
         $headers = [
             'Accept' => 'application/json',
@@ -50,15 +58,15 @@ class EmployeeController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "https://cdae9772-5646-4692-9a84-a96ed727de20.mock.pstmn.io",
             "headers" => $headers
         ]);
-        
+
         $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1".'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
-        
+
         return redirect('/dashboard/employees');
-        
     }
 
     public function show($id)

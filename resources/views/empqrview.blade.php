@@ -7,25 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        Dashboard
-    </h1>
-
-    <a href="login">Login</a> | <a href="logout">Logout</a>
-
-    <ul>
-        <li><a href="dashboard">Dashboard</a></li>
-        <li><a href="/dashboard/employees">Employees</a></li>
-        <li><a href="/dashboard/empdata">Employee Related Data</a></li>
-        <li><a href="/dashboard/student">Students</a></li>
-        <li><a href="/dashboard/studdata">Student Related Data</a></li>
-        <li><a href="/dashboard/users">Users</a></li>
-    </ul>
     <hr>
     <table border="1">
         @foreach ($contents as $content)
         <tr>
-            <th colspan="2">QR Code<br><img src="https://idserver.kbtc.edu.mm/qrcodes/{{ $content->empCardID }}.png"></th>
+            <th colspan="2">{{ $content->empName }}'s Profile<br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQotrbW-vxBRCZIOODdVJZ5NTaTjOnFveV500Dve9g&s"></th>
         </tr>
         <tr>
             <td>
@@ -51,14 +37,7 @@
                 {{ $content->empNRC }}
             </td>
         </tr>
-        <tr>
-            <td>
-                Employee Phone no.
-            </td>
-            <td>
-                {{ $content->empPhone }}
-            </td>
-        </tr>
+        
         <tr>
             <td>
                 Employee Join Date
