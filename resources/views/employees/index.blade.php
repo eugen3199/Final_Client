@@ -62,6 +62,26 @@
                         <option value="4">Manager</option>
                         <option value="5">Supervisor</option>
                         <option value="6">Intern</option>
+                        <option value="7">Principle</option>
+                        <option value="8">Academic Manager</option>
+                        <option value="9">Senior Academic Associate</option>
+                        <option value="10">Lecturer</option>
+                        <option value="11">Assistant Lecturer</option>
+                        <option value="12">Main Teacher</option>
+                        <option value="13">Language Teacher</option>
+                        <option value="14">Assistant Teacher</option>
+                        <option value="15">Hr Associate</option>
+                        <option value="16">Admin Supervisor</option>
+                        <option value="17">Admin Associate</option>
+                        <option value="18">Office Staff</option>
+                        <option value="19">Accountant</option>
+                        <option value="20">Senior IT Associate</option>
+                        <option value="21">IT Associate</option>
+                        <option value="22">Sale Associate</option>
+                        <option value="23">Graphic Designer</option>
+                        <option value="24">Student Affairs Supervisor</option>
+                        <option value="25">Student Affairs Associate</option>
+                        <option value="26">Security</option>
                     </select>
                 </td>
             </tr>
