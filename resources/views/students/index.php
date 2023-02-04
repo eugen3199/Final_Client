@@ -18,34 +18,43 @@
                 <td><input type="text" name="studName"></td>
             </tr>
             <tr>
-                <td>NRC</td>
-                <td><input type="text" name="studNRC"></td>
+                <td>Date of Birth</td>
+                <td><input type="text" name="studDoB"></td>
             </tr>
             <tr>
-                <td>Join Date</td>
-                <td><input type="text" name="studJoinDate"></td>
+                <td>Student's Guardian name</td>
+                <td><input type="text" name="studGuardName"></td>
             </tr>
             <tr>
-                <td>Phone No.</td>
-                <td><input type="text" name="studPhone"></td>
+                <td>Student's Emergency Phone No. (1)</td>
+                <td><input type="text" name="studEmgcPhone1"></td>
+            </tr>
+            <tr>
+                <td>Student's Emergency Phone No. (2)</td>
+                <td><input type="text" name="studEmgcPhone2"></td>
             </tr>
             <tr>
                 <td>Class</td>
                 <td>
-                    <select name="studCampusID">
-                        <option value="1">Main</option>
-                        <option value="2">U Khun Zaw</option>
-                        <option value="3">Mya Kan Thar</option>
+                    <select name="studClassID">
+                        <option value="1">ISR</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>Batch</td>
                 <td>
-                    <select name="studDeptID">
-                        <option value="1">IT</option>
-                        <option value="2">Admin</option>
-                        <option value="3">HR</option>
+                    <select name="studBatchID">
+                        <option value="1">Batch 1</option>
+                        <option value="2">Batch 2</option>
+                        <option value="3">Batch 3</option>
+                        <option value="4">Batch 4</option>
+                        <option value="5">Batch 5</option>
+                        <option value="6">Batch 6</option>
+                        <option value="7">Batch 7</option>
+                        <option value="8">Batch 8</option>
+                        <option value="9">Batch 9</option>
+                        <option value="10">Batch 10</option>
                     </select>
                 </td>
             </tr>

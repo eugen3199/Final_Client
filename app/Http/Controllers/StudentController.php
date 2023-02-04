@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -19,10 +21,10 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/employees?client='.env('CLIENT'));
+        $response = $client->request('GET', '/api/students?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // var_dump($contents);
-        return view('employees.index', compact('contents'));
+        return view('students.index', compact('contents'));
         // return view('companies.index', compact('companies'));
     }
 
@@ -30,24 +32,25 @@ class StudentController extends Controller
     {
         // var_dump($request);
         $fields = $request->validate([
-            'empName'=>'required',
-            'empCardID'=>'required',
-            'empPosID'=>'required',
-            'empDeptID'=>'required',
-            'empJoinDate'=>'required',
-            'empNRC'=>'required',
-            'empPhone'=>'required',
-            'empEmgcPerson'=>'required',
-            'empEmgcPhone'=>'required',
-            'empCampusID'=>'required',
-            // 'empImage' => 'required'
+            'studName'=>'required',
+            'studCardID'=>'required',
+            'studClassID'=>'required',
+            'studBatchID'=>'required',
+            'studGuardName'=>'required',
+            'studDoB'=>'required',
+            'studEmgcPhone1'=>'required',
+            'studEmgcPhone2'=>'required',
+            'SchoolEmgcCall'=>'required',
+            'studKey'=>'required',
+            'studStatus'=>'required',
+            // 'studImage' => 'required'
         ]);
 
         // Store Image
-        // $imageName = 'temp.'.$request->empImage->extension();
+        // $imageName = 'tstud.'.$request->studImage->extension();
 
         // Public Folder
-        // $request->empImage->move(public_path('/tmp'), $imageName);
+        // $request->studImage->move(public_path('/tmp'), $imageName);
 
         // // var_dump($fields);
 
@@ -63,23 +66,23 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-        $empKey = substr(str_shuffle($data), 0, 30);
-        // var_dump($empKey);
-        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empKey=".$empKey.'&client='.env('CLIENT'));
+        $studKey = substr(str_shuffle($data), 0, 30);
+
+        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studDoB=".$fields['studDoB']."&studGuardName=".$fields['studGuardName']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&studStatus=1&studKey=".$studKey."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&studStatus=".$fields['studStatus'].'&client='.env('CLIENT'));
         
         $contents = json_decode($response->getBody());
 
-        return redirect('/dashboard/employees');
+        return redirect('/dashboard/students');
     }
 
     public function show($id, Request $request)
     {
-        // $employee = Employees::find($id);
-        // if ($employee == Null){
+        // $studloyee = Empents::find($id);
+        // if ($studloyee == Null){
         //     return response('Employee with ID:'.$id.' not found.', 404)
         //         ->header('Content-Type', 'text/plain');
         // }
-        // return $employee;
+        // return $studloyee;
 
         $headers = [
             'Accept' => 'application/json',
@@ -92,23 +95,23 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
         
-        $response = $client->request('GET', "/api/employees/".$id.'?client='.env('CLIENT'));
+        $response = $client->request('GET', "/api/students/".$id.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
-        // return redirect('/dashboard/employees/$id');
-        return view('employees.details', compact('contents'));
+        // return redirect('/dashboard/students/$id');
+        return view('students.details', compact('contents'));
     }
 
     // public function update(Request $request, $id)
     // {
-    //     $Employee = Employees::find($id);
+    //     $Employee = Empents::find($id);
     //     $Employee->update($request->all());
     //     return $Employee;
     // }
 
     // public function destroy($id)
     // {
-    //     $employee = Employees::destroy($id);
-    //     if ($employee == 1){
+    //     $studloyee = Empents::destroy($id);
+    //     if ($studloyee == 1){
     //         return response('Employee with ID:'.$id.' successfully deleted', 200)
     //             ->header('Content-Type', 'text/plain');
     //     }
@@ -118,7 +121,7 @@ class StudentController extends Controller
     //     }
     // }
 
-    public function qrshow($empCardID, Request $request)
+    public function qrshow($studCardID, Request $request)
     {
         $headers = [
             'Accept' => 'application/json',
@@ -130,9 +133,9 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
         
-        $response = $client->request('GET', "/api/employees/search/".$empCardID."?empKey=".$request->empKey.'&client='.env('CLIENT'));
+        $response = $client->request('GET', "/api/students/search/".$studCardID."?studKey=".$request->studKey.'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
-        return view('employees.qrview', compact('contents'));
+        return view('students.qrview', compact('contents'));
     }
 }
