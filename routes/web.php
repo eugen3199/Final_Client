@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CampusController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PositionController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\BatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +33,7 @@ Route::get('/login', function(){
 });
 
 Route::post('/login/submit', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/dashboard', function(){
     return view('dashboard');
@@ -35,42 +42,21 @@ Route::prefix('public')->group(function () {
     Route::get('employee/{empCardID}', [EmployeeController::class, 'qrshow']);
 });
 
+Route::prefix('emprelated')->group(function () {
+    Route::resource('campuses', CampusController::class);
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('posiitions', PositionController::class);
+    Route::resource('prefixes', PrefixController::class);
+});
 
-Route::resource('/dashboard/employees', EmployeeController::class);
+Route::prefix('studrelated')->group(function () {
+    Route::resource('classes', ClassController::class);
+    Route::resource('batches', BatchController::class);
+    Route::resource('prefixes', PrefixController::class);
+});
 
-// Route::get('/dashboard/employees/{id}', function(){
-//     return view('dashboard');
-// });
-// Route::get('/dashboard/employees', [EmployeeController::class, 'index']);
-// Route::post('/dashboard/employees', [EmployeeController::class, 'store']);
-//Private Routes
-// Route::group(['prefix'=>'/dashboard'], function(){
-//     Route::resource('employees', EmployeeController::class);
-//     Route::resource('students', Controller::class);
-//     Route::resource('employees', Controller::class);
-//     Route::resource('employees', Controller::class);
-//     Route::resource('employees', Controller::class);
-//     Route::resource('employees', Controller::class);
-//     Route::resource('employees', Controller::class);
-//     Route::group(['prefix'=>'/dashboard/students'], function(){
-    
-//     });
-//     Route::group(['prefix'=>'/dashboard/users'], function(){
-    
-//     });
-//     Route::group(['prefix'=>'/dashboard/campus'], function(){
-    
-//     });
-//     Route::group(['prefix'=>'/dashboard/departments'], function(){
-    
-//     });
-//     Route::group(['prefix'=>'/dashboard/positions'], function(){
-    
-//     });
-//     Route::group(['prefix'=>'/dashboard/classes'], function(){
-    
-//     });
-//     Route::group(['prefix'=>'/dashboard/batches'], function(){
-    
-//     });
-// });
+Route::prefix('dashboard')->group(function () {
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('students', StudentController::class);
+    Route::resource('users', AuthController::class);
+});

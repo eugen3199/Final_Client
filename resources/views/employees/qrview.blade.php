@@ -4,31 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QR View</title>
 </head>
 <body>
-    <h1>
-        Dashboard
-    </h1>
-
-    <a href="login">Login</a> | <a href="logout">Logout</a>
-
-    <ul>
-        <li><a href="dashboard">Dashboard</a></li>
-        <li><a href="/dashboard/employees">Employees</a></li>
-        <li><a href="/dashboard/empdata">Employee Related Data</a></li>
-        <li><a href="/dashboard/student">Students</a></li>
-        <li><a href="/dashboard/studdata">Student Related Data</a></li>
-        <li><a href="/dashboard/users">Users</a></li>
-    </ul>
     <hr>
-    <table>
+    <table border="1">
+        @foreach ($contents as $content)
+        <tr>
+            <th colspan="2">{{ $content->empName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
+        </tr>
         <tr>
             <td>
                 Employee Card ID
             </td>
             <td>
-                {{ $contents->empCardID }}
+                {{ $content->empCardID }}
             </td>
         </tr>
         <tr>
@@ -36,7 +26,7 @@
                 Employee Name
             </td>
             <td>
-                {{ $contents->empName }}
+                {{ $content->empName }}
             </td>
         </tr>
         <tr>
@@ -44,23 +34,16 @@
                 Employee NRC
             </td>
             <td>
-                {{ $contents->empNRC }}
+                {{ $content->empNRC }}
             </td>
         </tr>
-        <tr>
-            <td>
-                Employee Phone no.
-            </td>
-            <td>
-                {{ $contents->empPhone }}
-            </td>
-        </tr>
+        
         <tr>
             <td>
                 Employee Join Date
             </td>
             <td>
-                {{ $contents->empJoinDate }}
+                {{ $content->empJoinDate }}
             </td>
         </tr>
         <tr>
@@ -68,7 +51,7 @@
                 Employee Campus
             </td>
             <td>
-                {{ $contents->empCampusID }}
+                {{ $content->empCampusID }}
             </td>
         </tr>
         <tr>
@@ -76,7 +59,7 @@
                 Employee Department
             </td>
             <td>
-                {{ $contents->empDeptID }}
+                {{ $content->empDeptID }}
             </td>
         </tr>
         <tr>
@@ -84,7 +67,7 @@
                 Employee Position
             </td>
             <td>
-                {{ $contents->empPosID }}
+                {{ $content->empPosID }}
             </td>
         </tr>
         <tr>
@@ -92,7 +75,7 @@
                 Employee Emergency Contact Person
             </td>
             <td>
-                {{ $contents->empEmgcPerson }}
+                {{ $content->empEmgcPerson }}
             </td>
         </tr>
         <tr>
@@ -100,9 +83,10 @@
                 Employee Emergency Contact No.
             </td>
             <td>
-                {{ $contents->empEmgcPhone }}
+                {{ $content->empEmgcPhone }}
             </td>
         </tr>
+        @endforeach
     </table>
 </body>
 </html>

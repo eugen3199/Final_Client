@@ -24,7 +24,7 @@ class EmployeeController extends Controller
         $response = $client->request('GET', '/api/employees?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // var_dump($contents);
-        return view('employees', compact('contents'));
+        return view('employees.index', compact('contents'));
         // return view('companies.index', compact('companies'));
     }
 
@@ -97,7 +97,7 @@ class EmployeeController extends Controller
         $response = $client->request('GET', "/api/employees/".$id.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // return redirect('/dashboard/employees/$id');
-        return view('empDetails', compact('contents'));
+        return view('employees.details', compact('contents'));
     }
 
     // public function update(Request $request, $id)
@@ -135,6 +135,6 @@ class EmployeeController extends Controller
         $response = $client->request('GET', "/api/employees/search/".$empCardID."?empKey=".$request->empKey.'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
-        return view('empqrview', compact('contents'));
+        return view('employees.qrview', compact('contents'));
     }
 }
