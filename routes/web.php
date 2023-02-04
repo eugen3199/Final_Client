@@ -45,7 +45,7 @@ Route::prefix('public')->group(function () {
 Route::prefix('emprelated')->group(function () {
     Route::resource('campuses', CampusController::class);
     Route::resource('departments', DepartmentController::class);
-    Route::resource('posiitions', PositionController::class);
+    Route::resource('positions', PositionController::class);
     Route::resource('prefixes', PrefixController::class);
 });
 

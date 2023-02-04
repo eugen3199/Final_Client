@@ -6,12 +6,12 @@
         <table>
             <tr>
                 <th colspan="2">
-                    Employee Create Form
+                    Position Create Form
                 </th>
             </tr>
             <tr>
-                <td>position Name</td>
-                <td><input type="text" name="campusName"></td>
+                <td>Position Name</td>
+                <td><input type="text" name="posName"></td>
             </tr>
             <tr>
                 <th colspan="2"><input type="submit" name="submit" value="Submit"></th>
@@ -37,10 +37,10 @@
                 {{ $position->id }}
             </td>
             <td>
-                {{ $position->campusName }}
+                {{ $position->posName }}
             </td>
             <td>
-                <a href="{{ route('positions.show', $position->id) }}">Details</a>|<a href="{{ route('positions.destroy', $position->id) }}">Delete</a>
+                <a href="{{ route('positions.update', $position->id) }}">Update</a>|<a href="{{ route('positions.destroy', $position->id) }}">Delete</a>
             </td>
             
         </tr>
