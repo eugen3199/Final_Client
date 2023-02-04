@@ -26,6 +26,10 @@
                 <td><input type="text" name="studGuardName"></td>
             </tr>
             <tr>
+                <td>School Emgergency Phone</td>
+                <td><input type="text" name="SchoolEmgcCall"></td>
+            </tr>
+            <tr>
                 <td>Student's Emergency Phone No. (1)</td>
                 <td><input type="text" name="studEmgcPhone1"></td>
             </tr>
@@ -37,7 +41,12 @@
                 <td>Class</td>
                 <td>
                     <select name="studClassID">
-                        <option value="1">ISR</option>
+                        <option value="1">Primary 1</option>
+                        <option value="2">Sceondary 2</option>
+                        <option value="3">Primary 5</option>
+                        <option value="4">Pre IGESE</option>
+                        <option value="5">IGCSE GED</option>
+                        <option value="6">GED</option>
                     </select>
                 </td>
             </tr>
@@ -45,26 +54,13 @@
                 <td>Batch</td>
                 <td>
                     <select name="studBatchID">
-                        <option value="1">Batch 1</option>
-                        <option value="2">Batch 2</option>
-                        <option value="3">Batch 3</option>
-                        <option value="4">Batch 4</option>
-                        <option value="5">Batch 5</option>
-                        <option value="6">Batch 6</option>
-                        <option value="7">Batch 7</option>
-                        <option value="8">Batch 8</option>
-                        <option value="9">Batch 9</option>
-                        <option value="10">Batch 10</option>
+                        <option value="1">Intake 1</option>
+                        <option value="2">Intake 2</option>
+                        <option value="3">Intake 3</option>
+                        <option value="4">Intake 4</option>
+                        <option value="5">Intake 5</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
-                <td>Emergency Contact Person</td>
-                <td><input type="text" name="studEmgcPerson"></td>
-            </tr>
-            <tr>
-                <td>Emergency Contact Phone No.</td>
-                <td><input type="text" name="studEmgcPhone"></td>
             </tr>
             <tr>
                 <th colspan="2"><input type="submit" name="submit" value="Submit"></th>

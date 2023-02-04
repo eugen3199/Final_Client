@@ -40,6 +40,7 @@ Route::get('/dashboard', function(){
 });
 Route::prefix('public')->group(function () {
     Route::get('employee/{empCardID}', [EmployeeController::class, 'qrshow']);
+    Route::get('student/{studCardID}', [StudentController::class, 'qrshow']);
 });
 
 Route::prefix('emprelated')->group(function () {
