@@ -30,7 +30,7 @@
                 <td><input type="text" name="studPhone"></td>
             </tr>
             <tr>
-                <td>Campus</td>
+                <td>Class</td>
                 <td>
                     <select name="studCampusID">
                         <option value="1">Main</option>
@@ -40,22 +40,12 @@
                 </td>
             </tr>
             <tr>
-                <td>Department</td>
+                <td>Batch</td>
                 <td>
                     <select name="studDeptID">
                         <option value="1">IT</option>
                         <option value="2">Admin</option>
                         <option value="3">HR</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Position</td>
-                <td>
-                    <select name="studPosID">
-                        <option value="1">Associate</option>
-                        <option value="2">Senior Associate</option>
-                        <option value="3">Manager</option>
                     </select>
                 </td>
             </tr>

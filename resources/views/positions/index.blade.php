@@ -1,7 +1,7 @@
 @extends('master')
 @section('title', 'positions')
 @section('contents')
-    <form action="{{ route('positions.store') }}" method="post">
+<form action="{{ route('positions.store') }}" method="post">
         @csrf
         <table>
             <tr>
