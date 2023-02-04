@@ -82,6 +82,7 @@
                         <option value="24">Student Affairs Supervisor</option>
                         <option value="25">Student Affairs Associate</option>
                         <option value="26">Security</option>
+                        <option value="27">Academic Associate</option>
                     </select>
                 </td>
             </tr>
