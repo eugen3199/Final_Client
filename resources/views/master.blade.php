@@ -15,7 +15,7 @@
 
     <ul>
         <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-        <li><a href="{{ url('/employees') }}">Employees</a></li>
+        <li><a href="{{ url('/dashboard/employees') }}">Employees</a></li>
         <li>
             Employee Related Data
             <ul>
@@ -25,7 +25,7 @@
                 <li><a href="{{ url('/emprelated/prefixes') }}">Prefixes</a></li>
             </ul>
         </li>
-        <li><a href="{{ url('/students') }}">Students</a></li>
+        <li><a href="{{ url('/dashboard/students') }}">Students</a></li>
         <li>Student Related Data
             <ul>
                 <li><a href="{{ url('/studrelated/classes') }}">Campuses</a></li>
@@ -33,7 +33,7 @@
                 <li><a href="{{ url('/emprelated/prefixes') }}">Prefixes</a></li>
             </ul>
         </li>
-        <li><a href="{{ url('/users') }}">Users</a></li>
+        <li><a href="{{ url('/dashboard/users') }}">Users</a></li>
     </ul>
     <hr>
     @yield('contents')
