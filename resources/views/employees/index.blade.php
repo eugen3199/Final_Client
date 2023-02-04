@@ -33,9 +33,7 @@
                 <td>Campus</td>
                 <td>
                     <select name="empCampusID">
-                        <option value="1">Main</option>
-                        <option value="2">U Khun Zaw</option>
-                        <option value="3">Mya Kan Thar</option>
+                        <option value="1">ISR 1</option>
                     </select>
                 </td>
             </tr>
@@ -46,6 +44,11 @@
                         <option value="1">IT</option>
                         <option value="2">Admin</option>
                         <option value="3">HR</option>
+                        <option value="4">Academic</option>
+                        <option value="5">Sale & Consultancy</option>
+                        <option value="6">Finance</option>
+                        <option value="7">Student Affairs  Operation</option>
+                        <option value="8">Marketing</option>
                     </select>
                 </td>
             </tr>
@@ -55,7 +58,10 @@
                     <select name="empPosID">
                         <option value="1">Associate</option>
                         <option value="2">Senior Associate</option>
-                        <option value="3">Manager</option>
+                        <option value="3">Assistant Manager</option>
+                        <option value="4">Manager</option>
+                        <option value="5">Supervisor</option>
+                        <option value="6">Intern</option>
                     </select>
                 </td>
             </tr>
