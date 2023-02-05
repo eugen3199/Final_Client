@@ -66,7 +66,7 @@ class StudentController extends Controller
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
         $studKey = substr(str_shuffle($data), 0, 30);
 
-        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studDoB=".$fields['studDoB']."&studGuardName=".$fields['studGuardName']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&studStatus=1&studKey=".$studKey."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&client=".env('CLIENT'));
+        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&studKey=".$studKey."&studStatus=1&client=".env('CLIENT'));
         
         $contents = json_decode($response->getBody());
 
