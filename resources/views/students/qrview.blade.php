@@ -67,7 +67,7 @@
                 School Emergency Call
             </td>
             <td>
-                {{ $content->studEmgcCall }}
+                {{ $content->SchoolEmgcCall }}
             </td>
         </tr>
         <tr>
