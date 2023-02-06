@@ -64,6 +64,7 @@
                         <option value="10">Batch 3+E</option>
                         <option value="11">Batch 6</option>
                         <option value="12">Foundation Batch 2</option>
+                        <option value="13">Batch 5</option>
                     </select>
                 </td>
             </tr>
