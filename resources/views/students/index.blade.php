@@ -41,10 +41,13 @@
                 <td>Class</td>
                 <td>
                 <select name="studClassID">
-                        <option value="1">GED</option>
+                    @foreach($classes as $class)
+                    <option value="{{ $class->id }}">{{ $class->className }}</option>
+                    @endforeach
+                        <!-- <option value="1">GED</option>
                         <option value="2">IGCSE</option>
                         <option value="3">Pre IGCSE</option>
-                        <option value="4">NCC+IG</option>
+                        <option value="4">NCC+IG</option> -->
                     </select>
                 </td>
             </tr>
@@ -52,7 +55,10 @@
                 <td>Batch</td>
                 <td>
                     <select name="studBatchID">
-                        <option value="1">Batch 6 Weekend 1</option>
+                        @foreach($batches as $batch)
+                        <option value="{{ $batch->id }}">{{ $batch->batchName }}</option>
+                        @endforeach
+                        <!-- <option value="1">Batch 6 Weekend 1</option>
                         <option value="2">Batch 9 Weekend 2</option>
                         <option value="3">Foundation Batch 3</option>
                         <option value="4">Preparation Batch 11</option>
@@ -64,7 +70,7 @@
                         <option value="10">Batch 3+E</option>
                         <option value="11">Batch 6</option>
                         <option value="12">Foundation Batch 2</option>
-                        <option value="13">Batch 5</option>
+                        <option value="13">Batch 5</option> -->
                     </select>
                 </td>
             </tr>
@@ -83,10 +89,16 @@
                 Name
             </td>
             <td>
+                Batch
+            </td>
+            <td>
+                Class
+            </td>
+            <td>
                 Config
             </td>
         </tr>
-        @foreach ($contents as $student)
+        @foreach ($students as $student)
         <tr>
             <td>
                 {{ $student->studCardID }}
@@ -95,7 +107,21 @@
                 {{ $student->studName }}
             </td>
             <td>
-                <img src="https://idserver.kbtc.edu.mm/qrcodes/students/{{ $student->studCardID }}.png"width="200px">
+            @foreach($batches as $batch)
+                @if($batch->id==$student->studBatchID)
+                {{ $batch->className }}
+                @endif
+            @endforeach
+            </td>
+            <td>
+            @foreach($classes as $class)
+                @if($class->id==$student->studClassID)
+                {{ $class->className }}
+                @endif
+            @endforeach
+            </td>
+            <td>
+                <img src="https://idserver.kbtc.edu.mm/students/qrcodes/{{ $student->studCardID }}.png"width="200px">
             </td>
             <td>
                 <a href="{{ route('students.show', $student->id) }}">Details</a>|<a href="{{ route('students.destroy', $student->id) }}">Delete</a>

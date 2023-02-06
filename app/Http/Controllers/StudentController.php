@@ -16,18 +16,18 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
-            // "base_uri" => "http://127.0.0.1:8000",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
 
         $response = $client->request('GET', '/api/students?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
-        $response2 = $client->request('GET', '/api/batches?client='.env('CLIENT'));
+        $response2 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
         $contents2 = json_decode($response2->getBody());
 
-        $response3 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
+        $response3 = $client->request('GET', '/api/batches?client='.env('CLIENT'));
         $contents3 = json_decode($response3->getBody());
         // var_dump($contents);
         return view('students.index')
@@ -67,9 +67,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "https://cdae9772-5646-4692-9a84-a96ed727de20.mock.pstmn.io",
-            // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
