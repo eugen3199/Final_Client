@@ -121,7 +121,7 @@
                 {{ $employee->empName }}
             </td>
             <td>
-                <img src="https://idserver.kbtc.edu.mm/qrcodes/{{ $employee->empCardID }}.png">
+                <img src="https://idserver.kbtc.edu.mm/qrcodes/employees/{{ $employee->empCardID }}.png">
             </td>
             <td>
                 <a href="{{ route('employees.show', $employee->id) }}">Details</a>|<a href="{{ route('employees.destroy', $employee->id) }}">Delete</a>
