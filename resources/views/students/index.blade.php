@@ -40,13 +40,10 @@
             <tr>
                 <td>Class</td>
                 <td>
-                    <select name="studClassID">
-                        <option value="1">Primary 1</option>
-                        <option value="2">Sceondary 2</option>
-                        <option value="3">Primary 5</option>
-                        <option value="4">Pre IGESE</option>
-                        <option value="5">IGCSE</option>
-                        <option value="6">GED</option>
+                <select name="studClassID">
+                        <option value="1">GED</option>
+                        <option value="2">IGCSE</option>
+                        <option value="3">Pre IGCSE</option>
                     </select>
                 </td>
             </tr>
@@ -54,16 +51,16 @@
                 <td>Batch</td>
                 <td>
                     <select name="studBatchID">
-                        <option value="1">Intake 1</option>
-                        <option value="2">Intake 2</option>
-                        <option value="3">Intake 3</option>
-                        <option value="4">Intake 4</option>
-                        <option value="5">Intake 5</option>
-                        <option value="6">Intake 6</option>
-                        <option value="7">Intake 7</option>
-                        <option value="8">Intake 8</option>
-                        <option value="9">Intake 9</option>
-                        <option value="10">Intake 10</option>
+                        <option value="1">Batch 6 Weekend 1</option>
+                        <option value="2">Batch 9 Weekend 2</option>
+                        <option value="3">Foundation Batch 3</option>
+                        <option value="4">Preparation Batch 11</option>
+                        <option value="5">A+B</option>
+                        <option value="6">Batch 7</option>
+                        <option value="7">Batch 8</option>
+                        <option value="8">Batch 9</option>
+                        <option value="9">Batch 10</option>
+                        <option value="10">Batch 3+E</option>
                     </select>
                 </td>
             </tr>
