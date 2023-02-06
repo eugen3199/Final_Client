@@ -28,8 +28,8 @@
         <li><a href="{{ url('/dashboard/students') }}">Students</a></li>
         <li>Student Related Data
             <ul>
-                <li><a href="{{ url('/studrelated/classes') }}">Campuses</a></li>
-                <li><a href="{{ url('/studrelated/batches') }}">Departments</a></li>
+                <li><a href="{{ url('/studrelated/classes') }}">Classes</a></li>
+                <li><a href="{{ url('/studrelated/batches') }}">Batches</a></li>
                 <li><a href="{{ url('/emprelated/prefixes') }}">Prefixes</a></li>
             </ul>
         </li>

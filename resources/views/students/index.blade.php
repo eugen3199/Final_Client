@@ -45,7 +45,7 @@
                         <option value="2">Sceondary 2</option>
                         <option value="3">Primary 5</option>
                         <option value="4">Pre IGESE</option>
-                        <option value="5">IGCSE GED</option>
+                        <option value="5">IGCSE</option>
                         <option value="6">GED</option>
                     </select>
                 </td>
@@ -59,6 +59,11 @@
                         <option value="3">Intake 3</option>
                         <option value="4">Intake 4</option>
                         <option value="5">Intake 5</option>
+                        <option value="6">Intake 6</option>
+                        <option value="7">Intake 7</option>
+                        <option value="8">Intake 8</option>
+                        <option value="9">Intake 9</option>
+                        <option value="10">Intake 10</option>
                     </select>
                 </td>
             </tr>
