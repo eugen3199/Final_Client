@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Session;
 
 class BatchController extends Controller
 {
@@ -14,23 +16,28 @@ class BatchController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
-            // "base_uri" => "http://127.0.0.1:8000",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
 
         $response = $client->request('GET', '/api/batches?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
-        // var_dump($contents);
-        return view('batches.index', compact('contents'));
-        // return view('companies.index', compact('companies'));
+
+        $response2 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
+        $contents2 = json_decode($response2->getBody());
+
+        return view('batches.index')
+                ->with('batches', $contents)
+                ->with('classes', $contents2);
     }
 
     public function store(Request $request)
     {
         // var_dump($request);
         $fields = $request->validate([
-            'batchName'=>'required'
+            'batchName'=>'required',
+            'batchClassID'=>'required'
         ]);
 
         // Store Image
@@ -47,16 +54,16 @@ class BatchController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "https://cdae9772-5646-4692-9a84-a96ed727de20.mock.pstmn.io",
-            // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
 
-        $response = $client->request('POST', "/api/batches?batchName=".$fields['batchName'].'&client='.env('CLIENT'));
+        $response = $client->request('POST', "/api/batches?batchName=".$fields['batchName'].'&batchClassID='.$fields['batchClassID'].'&client='.env('CLIENT'));
         
         $contents = json_decode($response->getBody());
 
-        return redirect('/dashboard/batches');
+        return redirect('/studrelated/batches');
     }
 }

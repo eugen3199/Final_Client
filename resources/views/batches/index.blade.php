@@ -14,6 +14,17 @@
                 <td><input type="text" name="batchName"></td>
             </tr>
             <tr>
+                <td>Class Name</td>
+                <td>
+                    <select name="batchClassID">
+                    @foreach($classes as $class)
+                    <option value="{{ $class->id }}">{{ $class->className }}</option>
+                    @endforeach
+                    </select>
+                    
+                </td>
+            </tr>
+            <tr>
                 <th colspan="2"><input type="submit" name="submit" value="Submit"></th>
             </tr>
         </table>
@@ -28,24 +39,30 @@
                 Name
             </td>
             <td>
+                Class ID
+            </td>
+            <td>
                 Config
             </td>
         </tr>
-        @foreach ($contents as $batch)
+        @foreach($batches as $batch)
         <tr>
             <td>
-                {{ $batch->id }}
+            {{ $batch->id }}
             </td>
             <td>
-                {{ $batch->batchName }}
+            {{ $batch->batchName }}
             </td>
             <td>
-                <img src="https://idserver.kbtc.edu.mm/qrcodes/{{ $employee->empCardID }}.png">
+                @foreach($classes as $class)
+                    @if($class->id==$batch->batchClassID)
+                    {{ $class->className }}
+                    @endif
+                @endforeach
             </td>
             <td>
-                <a href="{{ route('batchs.show', $batch->id) }}">Details</a>|<a href="{{ route('batches.destroy', $batch->id) }}">Delete</a>
+                Config
             </td>
-            
         </tr>
         @endforeach
     </table>

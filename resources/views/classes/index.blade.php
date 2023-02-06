@@ -6,12 +6,16 @@
         <table>
             <tr>
                 <th colspan="2">
-                    Employee Create Form
+                    Class Create Form
                 </th>
             </tr>
             <tr>
-                <td>class Name</td>
-                <td><input type="text" name="campusName"></td>
+                <td>Class Name</td>
+                <td><input type="text" name="className"></td>
+            </tr>
+            <tr>
+                <td>Prefix</td>
+                <td><input type="text" name="prefixName"></td>
             </tr>
             <tr>
                 <th colspan="2"><input type="submit" name="submit" value="Submit"></th>
@@ -28,6 +32,9 @@
                 Name
             </td>
             <td>
+                Prefix ID
+            </td>
+            <td>
                 Config
             </td>
         </tr>
@@ -37,7 +44,10 @@
                 {{ $class->id }}
             </td>
             <td>
-                {{ $class->campusName }}
+                {{ $class->className }}
+            </td>
+            <td>
+                {{ $class->classPrefixID }}
             </td>
             <td>
                 <a href="{{ route('classes.show', $class->id) }}">Details</a>|<a href="{{ route('classes.destroy', $class->id) }}">Delete</a>
