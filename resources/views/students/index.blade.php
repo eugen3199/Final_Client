@@ -89,7 +89,7 @@
                 {{ $student->studName }}
             </td>
             <td>
-                <img src="https://idserver.kbtc.edu.mm/qrcodes/students/{{ $student->studCardID }}.png">
+                <img src="https://idserver.kbtc.edu.mm/qrcodes/students/{{ $student->studCardID }}.png"width="200px">
             </td>
             <td>
                 <a href="{{ route('students.show', $student->id) }}">Details</a>|<a href="{{ route('students.destroy', $student->id) }}">Delete</a>
