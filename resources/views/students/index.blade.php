@@ -44,6 +44,7 @@
                         <option value="1">GED</option>
                         <option value="2">IGCSE</option>
                         <option value="3">Pre IGCSE</option>
+                        <option value="4">NCC+IG</option>
                     </select>
                 </td>
             </tr>
