@@ -113,7 +113,7 @@ class StudentController extends Controller
 
         // return redirect('/dashboard/students/$id');
         return view('students.details')
-                ->with('students', $contents)
+                ->with('student', $contents)
                 ->with('classes', $contents2)
                 ->with('batches', $contents3);;
     }
