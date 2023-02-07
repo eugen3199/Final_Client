@@ -60,7 +60,7 @@ class BatchController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('POST', "/api/batches?batchName=".$fields['batchName'].'&batchClassID='.$fields['batchClassID'].'&client='.env('CLIENT'));
+        $response = $client->request('POST', "/api/batches?batchName=".$fields['batchName'].'&batchClassID='.$fields['batchClassID'].'?client='.env('CLIENT'));
         
         $contents = json_decode($response->getBody());
 
