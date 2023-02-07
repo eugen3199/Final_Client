@@ -16,8 +16,8 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            // "base_uri" => "https://idserver.kbtc.edu.mm",
-            "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
 
@@ -67,9 +67,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "https://cdae9772-5646-4692-9a84-a96ed727de20.mock.pstmn.io",
-            "base_uri" => "http://127.0.0.1:8000",
+            // "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
