@@ -109,7 +109,7 @@
             <td>
             @foreach($batches as $batch)
                 @if($batch->id==$student->studBatchID)
-                {{ $batch->className }}
+                {{ $batch->batchName }}
                 @endif
             @endforeach
             </td>
