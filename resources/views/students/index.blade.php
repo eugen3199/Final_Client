@@ -56,7 +56,13 @@
                 <td>
                     <select name="studBatchID">
                         @foreach($batches as $batch)
-                        <option value="{{ $batch->id }}">{{ $batch->batchName }}</option>
+                        <option value="{{ $batch->id }}">{{ $batch->batchName }} (
+                            @foreach($classes as $class)
+                                @if($class->id==$batch->batchClassID)
+                                {{ $class->className }}
+                                @endif
+                            @endforeach
+                        )</option>
                         @endforeach
                         <!-- <option value="1">Batch 6 Weekend 1</option>
                         <option value="2">Batch 9 Weekend 2</option>
