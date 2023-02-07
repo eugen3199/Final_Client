@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" students="IE=edge">
+    <meta name="viewport" students="width=device-width, initial-scale=1.0">
     <title>QR View</title>
 </head>
 <body>
     <hr>
     <table border="1">
-        @foreach ($contents as $content)
+        @foreach ($studentss as $students)
         <tr>
-            <th colspan="2">{{ $content->studName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
+            <th colspan="2">{{ $students->studName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
         </tr>
         <tr>
             <td>
                 Student Card ID
             </td>
             <td>
-                {{ $content->studCardID }}
+                {{ $students->studCardID }}
             </td>
         </tr>
         <tr>
@@ -26,7 +26,7 @@
                 Student Name
             </td>
             <td>
-                {{ $content->studName }}
+                {{ $students->studName }}
             </td>
         </tr>
         <tr>
@@ -34,7 +34,7 @@
                 Student Date of Birth
             </td>
             <td>
-                {{ $content->studDoB }}
+                {{ $students->studDoB }}
             </td>
         </tr>
         
@@ -43,7 +43,7 @@
                 Student Guardian Name
             </td>
             <td>
-                {{ $content->studGuardName }}
+                {{ $students->studGuardName }}
             </td>
         </tr>
         <tr>
@@ -51,7 +51,11 @@
                 Student Batch
             </td>
             <td>
-                {{ $content->studBatchID }}
+                @foreach($batches as $batch)
+                    @if($batch->id==$student->studBatchID)
+                        {{ $batch->batchName }}
+                    @endif
+                @endforeach
             </td>
         </tr>
         <tr>
@@ -59,7 +63,11 @@
                 Student Class
             </td>
             <td>
-                {{ $content->studClassID }}
+                @foreach($classes as $class)
+                    @if($class->id==$student->studClassID)
+                        {{ $class->className }}
+                    @endif
+                @endforeach
             </td>
         </tr>
         <tr>
@@ -67,7 +75,7 @@
                 School Emergency Call
             </td>
             <td>
-                {{ $content->SchoolEmgcCall }}
+                {{ $students->SchoolEmgcCall }}
             </td>
         </tr>
         <tr>
@@ -75,7 +83,7 @@
                 Student Emergency Contact Phone (1)
             </td>
             <td>
-                {{ $content->studEmgcPhone1 }}
+                {{ $students->studEmgcPhone1 }}
             </td>
         </tr>
         <tr>
@@ -83,7 +91,7 @@
                 Student Emergency Contact Phone (2)
             </td>
             <td>
-                {{ $content->studEmgcPhone2 }}
+                {{ $students->studEmgcPhone2 }}
             </td>
         </tr>
         @endforeach

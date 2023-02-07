@@ -143,6 +143,15 @@ class StudentController extends Controller
         $response = $client->request('GET', "/api/students/search/".$studCardID."?studKey=".$request->studKey.'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
-        return view('students.qrview', compact('contents'));
+        $response2 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
+        $contents2 = json_decode($response2->getBody());
+
+        $response3 = $client->request('GET', '/api/batches?client='.env('CLIENT'));
+        $contents3 = json_decode($response3->getBody());
+
+        return view('students.qrview')
+                ->with('students', $contents)
+                ->with('classes', $contents2)
+                ->with('batches', $contents3);;
     }
 }
