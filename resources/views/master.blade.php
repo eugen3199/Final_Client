@@ -22,7 +22,6 @@
                 <li><a href="{{ url('/emprelated/campuses') }}">Campuses</a></li>
                 <li><a href="{{ url('/emprelated/departments') }}">Departments</a></li>
                 <li><a href="{{ url('/emprelated/positions') }}">Positions</a></li>
-                <li><a href="{{ url('/emprelated/prefixes') }}">Prefixes</a></li>
             </ul>
         </li>
         <li><a href="{{ url('/dashboard/students') }}">Students</a></li>
@@ -30,7 +29,6 @@
             <ul>
                 <li><a href="{{ url('/studrelated/classes') }}">Classes</a></li>
                 <li><a href="{{ url('/studrelated/batches') }}">Batches</a></li>
-                <li><a href="{{ url('/emprelated/prefixes') }}">Prefixes</a></li>
             </ul>
         </li>
         <li><a href="{{ url('/dashboard/users') }}">Users</a></li>
