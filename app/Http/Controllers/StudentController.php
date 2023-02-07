@@ -114,8 +114,8 @@ class StudentController extends Controller
         // return redirect('/dashboard/students/$id');
         return view('students.details')
                 ->with('student', $contents)
-                ->with('classes', $contents2)
-                ->with('batches', $contents3);;
+                ->with('class', $contents2)
+                ->with('batch', $contents3);;
     }
 
     // public function update(Request $request, $id)
