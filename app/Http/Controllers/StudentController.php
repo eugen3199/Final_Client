@@ -151,7 +151,7 @@ class StudentController extends Controller
 
         return view('students.qrview')
                 ->with('students', $contents)
-                ->with('classes', $contents2)
-                ->with('batches', $contents3);
+                ->with('class', $contents2)
+                ->with('batch', $contents3);
     }
 }

@@ -51,11 +51,7 @@
                 Student Batch
             </td>
             <td>
-                @foreach($batches as $batch)
-                    @if($batch->id==$student->studBatchID)
-                        {{ $batch->batchName }}
-                    @endif
-                @endforeach
+                {{ $batch->batchName }}
             </td>
         </tr>
         <tr>
@@ -63,11 +59,7 @@
                 Student Class
             </td>
             <td>
-                @foreach($classes as $class)
-                    @if($class->id==$student->studClassID)
-                        {{ $class->className }}
-                    @endif
-                @endforeach
+                {{ $class->className }}
             </td>
         </tr>
         <tr>
