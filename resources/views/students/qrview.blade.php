@@ -9,7 +9,7 @@
 <body>
     <hr>
     <table border="1">
-        @foreach ($studentss as $students)
+        @foreach ($students as $student)
         <tr>
             <th colspan="2">{{ $students->studName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
         </tr>
@@ -18,7 +18,7 @@
                 Student Card ID
             </td>
             <td>
-                {{ $students->studCardID }}
+                {{ $student->studCardID }}
             </td>
         </tr>
         <tr>
@@ -26,7 +26,7 @@
                 Student Name
             </td>
             <td>
-                {{ $students->studName }}
+                {{ $student->studName }}
             </td>
         </tr>
         <tr>
@@ -34,7 +34,7 @@
                 Student Date of Birth
             </td>
             <td>
-                {{ $students->studDoB }}
+                {{ $student->studDoB }}
             </td>
         </tr>
         
@@ -43,7 +43,7 @@
                 Student Guardian Name
             </td>
             <td>
-                {{ $students->studGuardName }}
+                {{ $student->studGuardName }}
             </td>
         </tr>
         <tr>
@@ -75,7 +75,7 @@
                 School Emergency Call
             </td>
             <td>
-                {{ $students->SchoolEmgcCall }}
+                {{ $student->SchoolEmgcCall }}
             </td>
         </tr>
         <tr>
@@ -83,7 +83,7 @@
                 Student Emergency Contact Phone (1)
             </td>
             <td>
-                {{ $students->studEmgcPhone1 }}
+                {{ $student->studEmgcPhone1 }}
             </td>
         </tr>
         <tr>
@@ -91,7 +91,7 @@
                 Student Emergency Contact Phone (2)
             </td>
             <td>
-                {{ $students->studEmgcPhone2 }}
+                {{ $student->studEmgcPhone2 }}
             </td>
         </tr>
         @endforeach
