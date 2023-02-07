@@ -44,10 +44,6 @@
                     @foreach($classes as $class)
                     <option value="{{ $class->id }}">{{ $class->className }}</option>
                     @endforeach
-                        <!-- <option value="1">GED</option>
-                        <option value="2">IGCSE</option>
-                        <option value="3">Pre IGCSE</option>
-                        <option value="4">NCC+IG</option> -->
                     </select>
                 </td>
             </tr>
@@ -64,19 +60,6 @@
                             @endforeach
                         )</option>
                         @endforeach
-                        <!-- <option value="1">Batch 6 Weekend 1</option>
-                        <option value="2">Batch 9 Weekend 2</option>
-                        <option value="3">Foundation Batch 3</option>
-                        <option value="4">Preparation Batch 11</option>
-                        <option value="5">A+B</option>
-                        <option value="6">Batch 7</option>
-                        <option value="7">Batch 8</option>
-                        <option value="8">Batch 9</option>
-                        <option value="9">Batch 10</option>
-                        <option value="10">Batch 3+E</option>
-                        <option value="11">Batch 6</option>
-                        <option value="12">Foundation Batch 2</option>
-                        <option value="13">Batch 5</option> -->
                     </select>
                 </td>
             </tr>
