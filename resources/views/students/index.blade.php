@@ -100,6 +100,13 @@
                 @if($batch->id==$student->studBatchID)
                 {{ $batch->batchName }}
                 @endif
+                (
+                @foreach($classes as $class)
+                    @if($class->id==$batch->batchClassID)
+                    {{ $class->className }}
+                    @endif
+                @endforeach
+                )
             @endforeach
             </td>
             <td>
