@@ -99,15 +99,15 @@
             @foreach($batches as $batch)
                 @if($batch->id==$student->studBatchID)
                 {{ $batch->batchName }}
+                (
+                @foreach($classes as $class)
+                    @if($class->id==$batch->batchClassID)
+                    {{ $class->className }}
+                    @endif
+                @endforeach
+                )
                 @endif
             @endforeach
-            (
-            @foreach($classes as $class)
-                @if($class->id==$batch->batchClassID)
-                {{ $class->className }}
-                @endif
-            @endforeach
-            )
             </td>
             <td>
             @foreach($classes as $class)
