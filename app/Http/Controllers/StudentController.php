@@ -96,8 +96,8 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            // "base_uri" => "https://idserver.kbtc.edu.mm",
-            "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "http://127.0.0.1:8000",
             "headers" => $headers
         ]);
         
