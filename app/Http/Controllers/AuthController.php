@@ -25,6 +25,7 @@ class AuthController extends Controller
             "headers" => $headers
         ]);
         $response = $client->request('POST', "/api/login?email=".$fields['email']."&password=".$fields['password'].'&client='.env('CLIENT'));
+        // $response = $client->request('POST', "/api/login?email=test_kbtc@email.com&password=test123&client=kbtc");
         $contents = json_decode($response->getBody());
         var_dump($contents);
         Session::put('key', $contents->token);

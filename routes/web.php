@@ -47,17 +47,20 @@ Route::prefix('emprelated')->group(function () {
     Route::resource('campuses', CampusController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('positions', PositionController::class);
-    Route::resource('prefixes', PrefixController::class);
+    // Route::resource('prefixes', PrefixController::class);
 });
 
 Route::prefix('studrelated')->group(function () {
     Route::resource('classes', ClassController::class);
     Route::resource('batches', BatchController::class);
-    Route::resource('prefixes', PrefixController::class);
+    // Route::resource('prefixes', PrefixController::class);
 });
 
 Route::prefix('dashboard')->group(function () {
     Route::resource('employees', EmployeeController::class);
     Route::resource('students', StudentController::class);
+    Route::prefix('students')->group(function () {
+        Route::post('{id}', [StudentController::class, 'update']);
+    });
     Route::resource('users', AuthController::class);
 });

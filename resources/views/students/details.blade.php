@@ -1,10 +1,13 @@
 @extends('master')
 @section('title', 'Student Detail')
 @section('contents')
-<form action="{{ route('students.update') }}" method="patch">
+<form action="{{ route('students.update', $student->id) }}" method="post">
+    @csrf
     <table>
         <tr>
-            <th colspan="2">{{ $student->studName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
+            <th colspan="2">{{ $student->studName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px">
+                {{ route('students.update', $student->id) }}
+            </th>
         </tr>
         <tr>
                 <th colspan="2">
@@ -21,7 +24,7 @@
             </tr>
             <tr>
                 <td>Date of Birth</td>
-                <td><input type="text" name="studDoB" value="{{ $student->studCardID }}"></td>
+                <td><input type="text" name="studDoB" value="{{ $student->studDoB }}"></td>
             </tr>
             <tr>
                 <td>Student's Guardian name</td>
@@ -29,7 +32,7 @@
             </tr>
             <tr>
                 <td>School Emgergency Phone</td>
-                <td><input type="text" name="SchoolEmgcCall" value="{{ $student->studEmgcCall }}"></td>
+                <td><input type="text" name="SchoolEmgcCall" value="{{ $student->SchoolEmgcCall }}"></td>
             </tr>
             <tr>
                 <td>Student's Emergency Phone No. (1)</td>
@@ -46,7 +49,7 @@
                         @foreach($classes as $class)
                         <option value="{{ $class->id }}" 
                             @if($class->id==$student->studClassID)
-                                echo('selected')
+                                selected
                             @endif
                         >{{ $class->className }}</option>
                         @endforeach
@@ -58,7 +61,11 @@
                 <td>
                     <select name="studBatchID">
                         @foreach($batches as $batch)
-                        <option value="{{ $batch->id }}">{{ $batch->batchName }} (
+                        <option value="{{ $batch->id }}"
+                            @if($batch->id==$student->studBatchID)
+                                selected
+                            @endif
+                            >{{ $batch->batchName }} (
                             @foreach($classes as $class)
                                 @if($class->id==$batch->batchClassID)
                                 {{ $class->className }}
