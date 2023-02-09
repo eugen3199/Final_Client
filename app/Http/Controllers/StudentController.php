@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $headers = [
             'Accept' => 'application/json',
@@ -22,7 +22,7 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/students?client='.env('CLIENT'));
+        $response = $client->request('GET', '/api/students?studClassID='.$request->studClassID.'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
         $response2 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
@@ -80,7 +80,7 @@ class StudentController extends Controller
         
         $contents = json_decode($response->getBody());
 
-        return redirect('/dashboard/students');
+        return redirect('/dashboard/students?studClassID=*');
     }
 
     public function show($id, Request $request)

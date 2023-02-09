@@ -24,7 +24,7 @@
                 <li><a href="{{ url('/emprelated/positions') }}">Positions</a></li>
             </ul>
         </li>
-        <li><a href="{{ url('/dashboard/students') }}">Students</a></li>
+        <li><a href="{{ url('/dashboard/students') }}?studClassID=*">Students</a></li>
         <li>Student Related Data
             <ul>
                 <li><a href="{{ url('/studrelated/classes') }}">Classes</a></li>

@@ -69,6 +69,31 @@
         </table>
     </form>
     <hr>
+    <table>
+        <form action="{{ url('/dashboard/students') }}" method="get">
+            @csrf
+            <tr>
+                <th>
+                    Filter
+                </th>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td>
+                    <select name="studClassID">
+                        <option value="*">All</option>
+                        @foreach($classes as $class)
+                        <option value="{{ $class->id }}">{{ $class->className }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="submit" value="filter">
+                </td>
+            </tr>
+        </form>
+    </table>
+    <hr>
     <table border="1">
         <tr>
             <td>
