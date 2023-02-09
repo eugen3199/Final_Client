@@ -80,7 +80,7 @@
             <tr>
                 <td>Class</td>
                 <td>
-                    <select name="studClassID">
+                    <select name="filterClassID">
                         <option value="*">All</option>
                         @foreach($classes as $class)
                         <option value="{{ $class->id }}">{{ $class->className }}</option>
