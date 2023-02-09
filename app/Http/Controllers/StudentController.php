@@ -80,7 +80,7 @@ class StudentController extends Controller
         
         $contents = json_decode($response->getBody());
 
-        return redirect('/dashboard/students?studClassID=*');
+        return redirect('/dashboard/students');
     }
 
     public function show($id, Request $request)
