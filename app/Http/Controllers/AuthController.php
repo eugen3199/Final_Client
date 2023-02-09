@@ -20,8 +20,9 @@ class AuthController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
         $response = $client->request('POST', "/api/login?email=".$fields['email']."&password=".$fields['password'].'&client='.env('CLIENT'));
@@ -40,8 +41,9 @@ class AuthController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
 

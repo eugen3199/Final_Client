@@ -16,8 +16,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
 
@@ -67,8 +68,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
@@ -96,8 +98,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
         
@@ -146,8 +149,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
 
             "headers" => $headers
         ]);
@@ -179,8 +183,9 @@ class StudentController extends Controller
         ];
 
         $client = new Client([
-            "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
             // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
         
