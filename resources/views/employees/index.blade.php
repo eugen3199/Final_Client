@@ -31,6 +31,7 @@
             </tr>
             <tr>
                 <td>Campus</td>
+                <td>
                     <select name="empCampusID">
                         @foreach($campuses as $campus)
                         <option value="{{ $campus->id }}">{{ $campus->CampusName }}</option>
