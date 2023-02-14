@@ -33,16 +33,9 @@ class DepartmentController extends Controller
     {
         // var_dump($request);
         $fields = $request->validate([
-            'deptName'=>'required'
+            'deptName'=>'required',
+            'prefixName'=>'required'
         ]);
-
-        // Store Image
-        // $imageName = 'temp.'.$request->empImage->extension();
-
-        // Public Folder
-        // $request->empImage->move(public_path('/tmp'), $imageName);
-
-        // // var_dump($fields);
 
         $headers = [
             'Accept' => 'application/json',
@@ -57,7 +50,7 @@ class DepartmentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('POST', "/api/departments?deptName=".$fields['deptName'].'&client='.env('CLIENT'));
+        $response = $client->request('POST', "/api/departments?deptName=".$fields['deptName'].'&prefixName='.$fields['prefixName'].'&client='.env('CLIENT'));
         
         $contents = json_decode($response->getBody());
 

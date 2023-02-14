@@ -31,9 +31,10 @@
             </tr>
             <tr>
                 <td>Campus</td>
-                <td>
                     <select name="empCampusID">
-                        <option value="1">ISR 1</option>
+                        @foreach($campuses as $campus)
+                        <option value="{{ $campus->id }}">{{ $campus->CampusName }}</option>
+                        @endforeach
                     </select>
                 </td>
             </tr>
@@ -41,14 +42,9 @@
                 <td>Department</td>
                 <td>
                     <select name="empDeptID">
-                        <option value="1">IT</option>
-                        <option value="2">Admin</option>
-                        <option value="3">HR</option>
-                        <option value="4">Academic</option>
-                        <option value="5">Sale & Consultancy</option>
-                        <option value="6">Finance</option>
-                        <option value="7">Student Affairs  Operation</option>
-                        <option value="8">Marketing</option>
+                        @foreach($depts as $dept)
+                        <option value="{{ $dept->id }}">{{ $dept->deptName }}</option>
+                        @endforeach
                     </select>
                 </td>
             </tr>
@@ -56,33 +52,9 @@
                 <td>Position</td>
                 <td>
                     <select name="empPosID">
-                        <option value="1">Associate</option>
-                        <option value="2">Senior Associate</option>
-                        <option value="3">Assistant Manager</option>
-                        <option value="4">Manager</option>
-                        <option value="5">Supervisor</option>
-                        <option value="6">Intern</option>
-                        <option value="7">Principle</option>
-                        <option value="8">Academic Manager</option>
-                        <option value="9">Senior Academic Associate</option>
-                        <option value="10">Lecturer</option>
-                        <option value="11">Assistant Lecturer</option>
-                        <option value="12">Main Teacher</option>
-                        <option value="13">Language Teacher</option>
-                        <option value="14">Assistant Teacher</option>
-                        <option value="15">Hr Associate</option>
-                        <option value="16">Admin Supervisor</option>
-                        <option value="17">Admin Associate</option>
-                        <option value="18">Office Staff</option>
-                        <option value="19">Accountant</option>
-                        <option value="20">Senior IT Associate</option>
-                        <option value="21">IT Associate</option>
-                        <option value="22">Sale Associate</option>
-                        <option value="23">Graphic Designer</option>
-                        <option value="24">Student Affairs Supervisor</option>
-                        <option value="25">Student Affairs Associate</option>
-                        <option value="26">Security</option>
-                        <option value="27">Academic Associate</option>
+                        @foreach($poss as $pos)
+                        <option value="{{ $pos->id }}">{{ $pos->posName }}</option>
+                        @endforeach
                     </select>
                 </td>
             </tr>
@@ -112,7 +84,7 @@
                 Config
             </td>
         </tr>
-        @foreach ($contents as $employee)
+        @foreach ($employees as $employee)
         <tr>
             <td>
                 {{ $employee->empCardID }}

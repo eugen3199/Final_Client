@@ -31,13 +31,13 @@
                 Config
             </td>
         </tr>
-        @foreach ($contents as $campus)
+        @foreach ($campuses as $campus)
         <tr>
             <td>
                 {{ $campus->id }}
             </td>
             <td>
-                {{ $campus->campusName }}
+                {{ $campus->CampusName }}
             </td>
             <td>
                 <a href="{{ route('campuses.show', $campus->id) }}">Details</a>|<a href="{{ route('campuses.destroy', $campus->id) }}">Delete</a>

@@ -25,7 +25,8 @@ class CampusController extends Controller
         $response = $client->request('GET', '/api/campuses?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
         // var_dump($contents);
-        return view('campuses.index', compact('contents'));
+        return view('campuses.index')
+            ->with('campuses', $contents);
         // return view('companies.index', compact('companies'));
     }
 

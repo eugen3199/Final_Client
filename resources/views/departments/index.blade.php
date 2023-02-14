@@ -11,7 +11,11 @@
             </tr>
             <tr>
                 <td>department Name</td>
-                <td><input type="text" name="campusName"></td>
+                <td><input type="text" name="deptName"></td>
+            </tr>
+            <tr>
+                <td>Department Prefix</td>
+                <td><input type="text" name="prefixName"></td>
             </tr>
             <tr>
                 <th colspan="2"><input type="submit" name="submit" value="Submit"></th>
@@ -28,6 +32,9 @@
                 Name
             </td>
             <td>
+                Prefix
+            </td>
+            <td>
                 Config
             </td>
         </tr>
@@ -37,7 +44,10 @@
                 {{ $department->id }}
             </td>
             <td>
-                {{ $department->campusName }}
+                {{ $department->deptName }}
+            </td>
+            <td>
+                {{ $department->deptPrefixID }}
             </td>
             <td>
                 <a href="{{ route('departments.show', $department->id) }}">Details</a>|<a href="{{ route('departments.destroy', $department->id) }}">Delete</a>

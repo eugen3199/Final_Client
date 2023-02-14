@@ -35,7 +35,6 @@ class StudentController extends Controller
                 ->with('students', $contents)
                 ->with('classes', $contents2)
                 ->with('batches', $contents3);
-        // return view('companies.index', compact('companies'));
     }
 
     public function store(Request $request)
