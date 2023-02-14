@@ -111,8 +111,21 @@ class EmployeeController extends Controller
         
         $response = $client->request('GET', "/api/employees/".$id.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
+
+        $response2 = $client->request('GET', '/api/campuses?client='.env('CLIENT'));
+        $contents2 = json_decode($response2->getBody());
+
+        $response3 = $client->request('GET', '/api/departments?client='.env('CLIENT'));
+        $contents3 = json_decode($response3->getBody());
+
+        $response4 = $client->request('GET', '/api/positions?client='.env('CLIENT'));
+        $contents4 = json_decode($response4->getBody());
         // return redirect('/dashboard/employees/$id');
-        return view('employees.details', compact('contents'));
+        return view('employees.details')
+                ->with('employees', $contents)
+                ->with('campuses', $contents2)
+                ->with('depts', $contents3)
+                ->with('poss', $contents4);
     }
 
     // public function update(Request $request, $id)

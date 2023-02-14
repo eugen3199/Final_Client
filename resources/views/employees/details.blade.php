@@ -7,7 +7,7 @@
                 Employee Card ID
             </td>
             <td>
-                {{ $contents->empCardID }}
+                {{ $employees->empCardID }}
             </td>
         </tr>
         <tr>
@@ -15,7 +15,7 @@
                 Employee Name
             </td>
             <td>
-                {{ $contents->empName }}
+                {{ $employees->empName }}
             </td>
         </tr>
         <tr>
@@ -23,7 +23,7 @@
                 Employee NRC
             </td>
             <td>
-                {{ $contents->empNRC }}
+                {{ $employees->empNRC }}
             </td>
         </tr>
         <tr>
@@ -31,7 +31,7 @@
                 Employee Phone no.
             </td>
             <td>
-                {{ $contents->empPhone }}
+                {{ $employees->empPhone }}
             </td>
         </tr>
         <tr>
@@ -39,7 +39,7 @@
                 Employee Join Date
             </td>
             <td>
-                {{ $contents->empJoinDate }}
+                {{ $employees->empJoinDate }}
             </td>
         </tr>
         <tr>
@@ -47,7 +47,11 @@
                 Employee Campus
             </td>
             <td>
-                {{ $contents->empCampusID }}
+                @foreach($campuses as $campus)
+                    @if($campus->id==$employees->empCampusID)
+                    {{ $campus->CampusName }}
+                    @endif
+                @endforeach
             </td>
         </tr>
         <tr>
@@ -55,7 +59,11 @@
                 Employee Department
             </td>
             <td>
-                {{ $contents->empDeptID }}
+                @foreach($depts as $dept)
+                    @if($dept->id==$employees->empDeptID)
+                    {{ $dept->deptName }}
+                    @endif
+                @endforeach
             </td>
         </tr>
         <tr>
@@ -63,7 +71,11 @@
                 Employee Position
             </td>
             <td>
-                {{ $contents->empPosID }}
+                @foreach($poss as $pos)
+                    @if($pos->id==$employees->empPosID)
+                    {{ $pos->posName }}
+                    @endif
+                @endforeach
             </td>
         </tr>
         <tr>
@@ -71,7 +83,7 @@
                 Employee Emergency Contact Person
             </td>
             <td>
-                {{ $contents->empEmgcPerson }}
+                {{ $employees->empEmgcPerson }}
             </td>
         </tr>
         <tr>
@@ -79,7 +91,7 @@
                 Employee Emergency Contact No.
             </td>
             <td>
-                {{ $contents->empEmgcPhone }}
+                {{ $employees->empEmgcPhone }}
             </td>
         </tr>
     </table>

@@ -40,10 +40,10 @@
             <tr>
                 <td>Class</td>
                 <td>
-                <select name="studClassID">
-                    @foreach($classes as $class)
-                    <option value="{{ $class->id }}">{{ $class->className }}</option>
-                    @endforeach
+                    <select name="studClassID">
+                        @foreach($classes as $class)
+                        <option value="{{ $class->id }}">{{ $class->className }}</option>
+                        @endforeach
                     </select>
                 </td>
             </tr>
