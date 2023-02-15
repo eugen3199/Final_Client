@@ -3,19 +3,19 @@
 @section('contents')
     <table>
         <tr>
-            <td>
+            <th>
                 Employee Card ID
-            </td>
-            <td>
+            </th>
+            <th>
                 {{ $employees->empCardID }}
-            </td>
+            </th>
         </tr>
         <tr>
             <td>
                 Employee Name
             </td>
             <td>
-                {{ $employees->empName }}
+                <input type="text" name="empName" value="{{ $employees->empName }}">
             </td>
         </tr>
         <tr>
@@ -23,6 +23,7 @@
                 Employee NRC
             </td>
             <td>
+                <input type="text" name="empNRC" value="{{ $employees->empNRC }}">
                 {{ $employees->empNRC }}
             </td>
         </tr>
@@ -31,6 +32,7 @@
                 Employee Phone no.
             </td>
             <td>
+                <input type="text" name="empPhone" value="{{ $employees->empPhone }}">
                 {{ $employees->empPhone }}
             </td>
         </tr>
@@ -39,6 +41,7 @@
                 Employee Join Date
             </td>
             <td>
+                <input type="text" name="empJoinDate" value="{{ $employees->empJoinDate }}">
                 {{ $employees->empJoinDate }}
             </td>
         </tr>
@@ -47,11 +50,15 @@
                 Employee Campus
             </td>
             <td>
-                @foreach($campuses as $campus)
-                    @if($campus->id==$employees->empCampusID)
-                    {{ $campus->CampusName }}
-                    @endif
-                @endforeach
+                <select name="empCampusID">
+                    @foreach($campuses as $campus)
+                    <option value="{{ $campus->id }}" 
+                        @if($campus->id==$employees->empCampusID)
+                            selected
+                        @endif
+                    >{{ $campus->CampusName }}</option>
+                    @endforeach
+                </select>
             </td>
         </tr>
         <tr>
@@ -59,11 +66,15 @@
                 Employee Department
             </td>
             <td>
-                @foreach($depts as $dept)
-                    @if($dept->id==$employees->empDeptID)
-                    {{ $dept->deptName }}
-                    @endif
-                @endforeach
+                <select name="empDeptID">
+                    @foreach($depts as $dept)
+                    <option value="{{ $dept->id }}" 
+                        @if($dept->id==$employees->empDeptID)
+                            selected
+                        @endif
+                    >{{ $dept->deptName }}</option>
+                    @endforeach
+                </select>
             </td>
         </tr>
         <tr>
