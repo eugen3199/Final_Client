@@ -50,7 +50,7 @@ class StudentController extends Controller
             'studEmgcPhone1'=>'required',
             'studEmgcPhone2'=>'required',
             'SchoolEmgcCall'=>'required',
-            'studQR'=>'required',
+            // 'studQR'=>'required',
             // 'studImage' => 'required'
         ]);
 
@@ -69,8 +69,8 @@ class StudentController extends Controller
 
         $client = new Client([
             // "base_uri" => "https://idserver.kbtc.edu.mm",
-            "base_uri" => "https://5168e273-83f6-4efb-9f88-bad88cb7669e.mock.pstmn.io",
-            // "base_uri" => env('BASE_URI'),
+            // "base_uri" => "https://5168e273-83f6-4efb-9f88-bad88cb7669e.mock.pstmn.io",
+            "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
@@ -78,7 +78,7 @@ class StudentController extends Controller
 
         $t = time();
 
-        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&studKey=".$studKey."&studStatus=1&client=".env('CLIENT')."&empQR=".$fields['studCardID'].'_'.$t.'.png');
+        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&studKey=".$studKey."&studStatus=1&client=".env('CLIENT')."&studQR=".$fields['studCardID'].'_'.$t.'.png&studProfileImg=None');
         
         $contents = json_decode($response->getBody());
 

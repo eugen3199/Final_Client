@@ -83,7 +83,7 @@ class EmployeeController extends Controller
         // var_dump($empKey);
 
         //To fix Response to be more clear
-        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empKey=".$empKey.'&client='.env('CLIENT')."&empQR=".$fields['empCardID'].'_'.time().'.png');
+        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empKey=".$empKey.'&client='.env('CLIENT')."&empQR=".$fields['empCardID'].'_'.time().'.png&empProfileImg=None');
         
         $contents = json_decode($response->getBody());
 
