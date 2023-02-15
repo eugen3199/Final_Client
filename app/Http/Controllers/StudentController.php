@@ -50,6 +50,7 @@ class StudentController extends Controller
             'studEmgcPhone1'=>'required',
             'studEmgcPhone2'=>'required',
             'SchoolEmgcCall'=>'required',
+            'studQR'=>'required',
             // 'studImage' => 'required'
         ]);
 
@@ -68,14 +69,16 @@ class StudentController extends Controller
 
         $client = new Client([
             // "base_uri" => "https://idserver.kbtc.edu.mm",
-            // "base_uri" => "http://127.0.0.1:8000",
-            "base_uri" => env('BASE_URI'),
+            "base_uri" => "https://5168e273-83f6-4efb-9f88-bad88cb7669e.mock.pstmn.io",
+            // "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
         $studKey = substr(str_shuffle($data), 0, 30);
 
-        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&studKey=".$studKey."&studStatus=1&client=".env('CLIENT'));
+        $t = time();
+
+        $response = $client->request('POST', "/api/students?studCardID=".$fields['studCardID']."&studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&studKey=".$studKey."&studStatus=1&client=".env('CLIENT')."&empQR=".$fields['studCardID'].'_'.$t.'.png');
         
         $contents = json_decode($response->getBody());
 
@@ -155,7 +158,7 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('PATCH', "/api/students/".$id."?studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&client=".env('CLIENT'));
+        $response = $client->request('PATCH', "/api/students/".$id."?studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&client=".env('CLIENT')."&studQR=".public_path('/students/qrcodes/').$request->studCardID.'_'.time().'.png');
 
         $contents = json_decode($response->getBody());
         return redirect(route('students.show', $id));

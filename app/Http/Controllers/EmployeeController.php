@@ -81,7 +81,9 @@ class EmployeeController extends Controller
         $empKey = substr(str_shuffle($data), 0, 30);
         // $empKey = '123asdzxcqweasd';
         // var_dump($empKey);
-        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empKey=".$empKey.'&client='.env('CLIENT'));
+
+        //To fix Response to be more clear
+        $response = $client->request('POST', "/api/employees?empCardID=".$fields['empCardID']."&empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID']."&empStatus=1&empKey=".$empKey.'&client='.env('CLIENT')."&empQR=".$fields['empCardID'].'_'.time().'.png');
         
         $contents = json_decode($response->getBody());
 

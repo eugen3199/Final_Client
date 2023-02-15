@@ -142,7 +142,7 @@
             @endforeach
             </td>
             <td>
-                <img src="https://idserver.kbtc.edu.mm/students/qrcodes/{{ $student->studCardID }}.png"width="200px">
+                <img src="https://idserver.kbtc.edu.mm/{{ $student->studQR }}"width="200px">
             </td>
             <td>
                 <a href="{{ route('students.show', $student->id) }}">Details</a>|<a href="{{ route('students.destroy', $student->id) }}">Delete</a>
