@@ -130,25 +130,48 @@ class EmployeeController extends Controller
                 ->with('poss', $contents4);
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $Employee = Employees::find($id);
-    //     $Employee->update($request->all());
-    //     return $Employee;
-    // }
+    public function update(Request $request, $id)
+    {
+        // var_dump($request);
+        $fields = $request->validate([
+            'empName'=>'required',
+            'empPosID'=>'required',
+            'empDeptID'=>'required',
+            'empJoinDate'=>'required',
+            'empNRC'=>'required',
+            'empPhone'=>'required',
+            'empEmgcPerson'=>'required',
+            'empEmgcPhone'=>'required',
+            'empCampusID'=>'required',
+        ]);
 
-    // public function destroy($id)
-    // {
-    //     $employee = Employees::destroy($id);
-    //     if ($employee == 1){
-    //         return response('Employee with ID:'.$id.' successfully deleted', 200)
-    //             ->header('Content-Type', 'text/plain');
-    //     }
-    //     else{
-    //         return response('Employee with ID:'.$id.' was not deleted', 404)
-    //             ->header('Content-Type', 'text/plain');
-    //     }
-    // }
+        // Store Image
+        // $imageName = 'temp.'.$request->empImage->extension();
+
+        // Public Folder
+        // $request->empImage->move(public_path('/tmp'), $imageName);
+
+        // // var_dump($fields);
+
+        $headers = [
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.Session::get('key'),
+        ];
+
+        $client = new Client([
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
+
+            "headers" => $headers
+        ]);
+
+        $response = $client->request('PATCH', "/api/employees?empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID'].'&client='.env('CLIENT');
+
+        $contents = json_decode($response->getBody());
+        return redirect(route('employees.show', $id));
+
+    }
 
     public function qrshow($empCardID, Request $request)
     {
