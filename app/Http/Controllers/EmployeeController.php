@@ -197,9 +197,8 @@ class EmployeeController extends Controller
 
         return view('employees.qrview', compact('contents'));
     }
-}
 
-public function destroy($id)
+    public function destroy($id)
     {
         $headers = [
             'Accept' => 'application/json',
@@ -217,3 +216,4 @@ public function destroy($id)
         $contents = json_decode($response->getBody());
         return redirect(route('employees.index'));
     }
+}
