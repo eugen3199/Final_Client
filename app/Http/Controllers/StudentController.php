@@ -171,7 +171,8 @@ class StudentController extends Controller
 
         $response = $client->request('DELETE', '/api/students/'.$id.'?client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
-        return redirect(route('students.index'));
+        
+        return redirect('/dashboard/students?filterClassID=*');
     }
 
     public function qrshow($studCardID, Request $request)
