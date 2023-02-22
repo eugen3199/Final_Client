@@ -4,7 +4,6 @@
 <form action="{{ route('employees.update', $employees->id) }}" method="post">
     @csrf
     <table>
-
         <tr>
             <th colspan="2">{{ $employees->empName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px">
             </th>
@@ -91,7 +90,7 @@
                 Employee Position
             </td>
             <td>
-                <select name="empDeptID">
+                <select name="empPosID">
                     @foreach($poss as $pos)
                     <option value="{{ $dept->id }}" 
                         @if($pos->id==$employees->empPosID)
@@ -107,7 +106,7 @@
                 Employee Emergency Contact Person
             </td>
             <td>
-                <input type="text" name="empJoinDate" value="{{ $employees->empEmgcPerson }}">
+                <input type="text" name="empEmgcPerson" value="{{ $employees->empEmgcPerson }}">
             </td>
         </tr>
         <tr>
@@ -115,7 +114,7 @@
                 Employee Emergency Contact No.
             </td>
             <td>
-                <input type="text" name="empJoinDate" value="{{ $employees->empEmgcPhone }}">
+                <input type="text" name="empEmgcPhone" value="{{ $employees->empEmgcPhone }}">
             </td>
         </tr>
         <tr>

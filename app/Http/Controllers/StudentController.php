@@ -124,7 +124,6 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
-        // var_dump($request);
         $fields = $request->validate([
             'studName'=>'required',
             'studClassID'=>'required',
@@ -134,16 +133,7 @@ class StudentController extends Controller
             'studEmgcPhone1'=>'required',
             'studEmgcPhone2'=>'required',
             'SchoolEmgcCall'=>'required',
-            // 'studImage' => 'required'
         ]);
-
-        // Store Image
-        // $imageName = 'tstud.'.$request->studImage->extension();
-
-        // Public Folder
-        // $request->studImage->move(public_path('/tmp'), $imageName);
-
-        // // var_dump($fields);
 
         $headers = [
             'Accept' => 'application/json',

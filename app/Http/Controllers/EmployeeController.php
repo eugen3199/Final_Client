@@ -17,7 +17,7 @@ class EmployeeController extends Controller
 
         $client = new Client([
             // "base_uri" => "https://idserver.kbtc.edu.mm",
-            // "base_uri" => "http://127.0.0.1:8000",
+            // "base_uri" => "https://884bac0d-a606-4d17-9372-fd2c011ff782.mock.pstmn.io",
             "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
@@ -132,7 +132,6 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $id)
     {
-        // var_dump($request);
         $fields = $request->validate([
             'empName'=>'required',
             'empPosID'=>'required',
@@ -152,16 +151,13 @@ class EmployeeController extends Controller
 
         $client = new Client([
             // "base_uri" => "https://idserver.kbtc.edu.mm",
-            // "base_uri" => "https://539cf634-a373-45a4-9c75-f5f41d751a13.mock.pstmn.io",
+            // "base_uri" => "https://884bac0d-a606-4d17-9372-fd2c011ff782.mock.pstmn.io",
             "base_uri" => env('BASE_URI'),
 
             "headers" => $headers
         ]);
 
         $response = $client->request('PATCH', "/api/employees/".$id."?empName=".$fields['empName']."&empPosID=".$fields['empPosID']."&empDeptID=".$fields['empDeptID']."&empJoinDate=".$fields['empJoinDate']."&empNRC=".$fields['empNRC']."&empPhone=".$fields['empPhone']."&empEmgcPerson=".$fields['empEmgcPerson']."&empEmgcPhone=".$fields['empEmgcPhone']."&empCampusID=".$fields['empCampusID'].'&client='.env('CLIENT'));
-
-        // $contents = json_decode($response->getBody());
-        // return redirect(route('students.show', $id));
 
         $contents = json_decode($response->getBody());
         return redirect(route('employees.show', $id));
