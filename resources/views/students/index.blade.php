@@ -149,7 +149,7 @@
                     <a href="{{ route('students.show', $student->id) }}">Details</a> | 
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <!-- <button type="submit">Delete</button> -->
                 </form>
             </td>
             
