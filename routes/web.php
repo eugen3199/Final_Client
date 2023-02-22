@@ -58,12 +58,16 @@ Route::prefix('studrelated')->group(function () {
 
 Route::prefix('dashboard')->group(function () {
     Route::resource('employees', EmployeeController::class);
+
     Route::prefix('employees')->group(function () {
         Route::post('{id}', [EmployeeController::class, 'update']);
     });
+
     Route::resource('students', StudentController::class);
+
     Route::prefix('students')->group(function () {
         Route::post('{id}', [StudentController::class, 'update']);
     });
+    
     Route::resource('users', AuthController::class);
 });

@@ -158,7 +158,7 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('PATCH', "/api/students/".$id."?studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&client=".env('CLIENT');
+        $response = $client->request('PATCH', "/api/students/".$id."?studName=".$fields['studName']."&studClassID=".$fields['studClassID']."&studBatchID=".$fields['studBatchID']."&studGuardName=".$fields['studGuardName']."&studDoB=".$fields['studDoB']."&studEmgcPhone1=".$fields['studEmgcPhone1']."&studEmgcPhone2=".$fields['studEmgcPhone2']."&SchoolEmgcCall=".$fields['SchoolEmgcCall']."&client=".env('CLIENT'));
 
         $contents = json_decode($response->getBody());
         return redirect(route('students.show', $id));
