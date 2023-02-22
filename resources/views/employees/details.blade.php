@@ -92,7 +92,7 @@
             <td>
                 <select name="empPosID">
                     @foreach($poss as $pos)
-                    <option value="{{ $dept->id }}" 
+                    <option value="{{ $pos->id }}" 
                         @if($pos->id==$employees->empPosID)
                             selected
                         @endif

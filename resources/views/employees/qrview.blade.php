@@ -9,16 +9,15 @@
 <body>
     <hr>
     <table border="1">
-        @foreach ($contents as $content)
         <tr>
-            <th colspan="2">{{ $content->empName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
+            <th colspan="2">{{ $employee->empName }}'s Profile<br><img src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg" width="200px"></th>
         </tr>
         <tr>
             <td>
                 Employee Card ID
             </td>
             <td>
-                {{ $content->empCardID }}
+                {{ $employee->empCardID }}
             </td>
         </tr>
         <tr>
@@ -26,7 +25,7 @@
                 Employee Name
             </td>
             <td>
-                {{ $content->empName }}
+                {{ $employee->empName }}
             </td>
         </tr>
         <tr>
@@ -34,7 +33,7 @@
                 Employee NRC
             </td>
             <td>
-                {{ $content->empNRC }}
+                {{ $employee->empNRC }}
             </td>
         </tr>
         
@@ -43,7 +42,7 @@
                 Employee Join Date
             </td>
             <td>
-                {{ $content->empJoinDate }}
+                {{ $employee->empJoinDate }}
             </td>
         </tr>
         <tr>
@@ -51,7 +50,7 @@
                 Employee Campus
             </td>
             <td>
-                {{ $content->empCampusID }}
+                {{ $campus->CampusName }}
             </td>
         </tr>
         <tr>
@@ -59,7 +58,7 @@
                 Employee Department
             </td>
             <td>
-                {{ $content->empDeptID }}
+                {{ $department->deptName }}
             </td>
         </tr>
         <tr>
@@ -67,7 +66,7 @@
                 Employee Position
             </td>
             <td>
-                {{ $content->empPosID }}
+                {{ $position->posName }}
             </td>
         </tr>
         <tr>
@@ -75,7 +74,7 @@
                 Employee Emergency Contact Person
             </td>
             <td>
-                {{ $content->empEmgcPerson }}
+                {{ $employee->empEmgcPerson }}
             </td>
         </tr>
         <tr>
@@ -83,10 +82,9 @@
                 Employee Emergency Contact No.
             </td>
             <td>
-                {{ $content->empEmgcPhone }}
+                {{ $employee->empEmgcPhone }}
             </td>
         </tr>
-        @endforeach
     </table>
 </body>
 </html>

@@ -119,7 +119,7 @@ class StudentController extends Controller
         return view('students.details')
                 ->with('student', $contents)
                 ->with('classes', $contents2)
-                ->with('batches', $contents3);;
+                ->with('batches', $contents3);
     }
 
     public function update(Request $request, $id)

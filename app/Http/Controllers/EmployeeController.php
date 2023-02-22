@@ -180,6 +180,21 @@ class EmployeeController extends Controller
         $response = $client->request('GET', "/api/employees/search/".$empCardID."?empKey=".$request->empKey.'&client='.env('CLIENT'));
         $contents = json_decode($response->getBody());
 
+        $response2 = $client->request('GET', "/api/campuses/search/".$contents[0]->empCampusID.'?client='.env('CLIENT'));
+        $contents2 = json_decode($response2->getBody());
+
+        $response3 = $client->request('GET', "/api/positions/search/".$contents[0]->empPosID.'?client='.env('CLIENT'));
+        $contents3 = json_decode($response3->getBody());
+
+        $response4 = $client->request('GET', "/api/departments/search/".$contents[0]->empDeptID.'?client='.env('CLIENT'));
+        $contents4 = json_decode($response4->getBody());
+
+        return view('employees.qrview')
+                ->with('employee', $contents[0])
+                ->with('campus', $contents2)
+                ->with('position', $contents3)
+                ->with('department', $contents4);
+
         return view('employees.qrview', compact('contents'));
     }
 }
