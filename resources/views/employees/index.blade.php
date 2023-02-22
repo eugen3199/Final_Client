@@ -97,7 +97,12 @@
                 <img src="https://idserver.kbtc.edu.mm/employees/qrcodes/{{ $employee->empQR }}">
             </td>
             <td>
-                <a href="{{ route('employees.show', $employee->id) }}">Details</a>|<a href="{{ route('employees.destroy', $employee->id) }}">Delete</a>
+                <form action="{{ route('employees.destroy', $employee->id) }}" method="Post">
+                    <a href="{{ route('employees.show', $employee->id) }}">Details</a> | 
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
             </td>
             
         </tr>

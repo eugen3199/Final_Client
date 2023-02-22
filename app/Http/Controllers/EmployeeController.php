@@ -198,3 +198,22 @@ class EmployeeController extends Controller
         return view('employees.qrview', compact('contents'));
     }
 }
+
+public function destroy($id)
+    {
+        $headers = [
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.Session::get('key'),
+        ];
+
+        $client = new Client([
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
+            "headers" => $headers
+        ]);
+
+        $response = $client->request('DELETE', '/api/employees/'.$id.'?client='.env('CLIENT'));
+        $contents = json_decode($response->getBody());
+        return redirect(route('employees.index'));
+    }

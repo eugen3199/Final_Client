@@ -155,18 +155,24 @@ class StudentController extends Controller
 
     }
 
-    // public function destroy($id)
-    // {
-    //     $studloyee = Empents::destroy($id);
-    //     if ($studloyee == 1){
-    //         return response('Employee with ID:'.$id.' successfully deleted', 200)
-    //             ->header('Content-Type', 'text/plain');
-    //     }
-    //     else{
-    //         return response('Employee with ID:'.$id.' was not deleted', 404)
-    //             ->header('Content-Type', 'text/plain');
-    //     }
-    // }
+    public function destroy($id)
+    {
+        $headers = [
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.Session::get('key'),
+        ];
+
+        $client = new Client([
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "http://127.0.0.1:8000",
+            "base_uri" => env('BASE_URI'),
+            "headers" => $headers
+        ]);
+
+        $response = $client->request('DELETE', '/api/students/'.$id.'?client='.env('CLIENT'));
+        $contents = json_decode($response->getBody());
+        return redirect(route('students.index'));
+    }
 
     public function qrshow($studCardID, Request $request)
     {
