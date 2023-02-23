@@ -101,7 +101,7 @@
                     <a href="{{ route('employees.show', $employee->id) }}">Details</a> | 
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete ID-{{ $employee->empCardID }} ({{ $employee->empName }})?')">Delete</button>
                 </form>
             </td>
             

@@ -103,12 +103,6 @@
                 Name
             </td>
             <td>
-                Batch
-            </td>
-            <td>
-                Class
-            </td>
-            <td>
                 Config
             </td>
         </tr>
@@ -121,27 +115,6 @@
                 {{ $student->studName }}
             </td>
             <td>
-            @foreach($batches as $batch)
-                @if($batch->id==$student->studBatchID)
-                {{ $batch->batchName }}
-                (
-                @foreach($classes as $class)
-                    @if($class->id==$batch->batchClassID)
-                    {{ $class->className }}
-                    @endif
-                @endforeach
-                )
-                @endif
-            @endforeach
-            </td>
-            <td>
-            @foreach($classes as $class)
-                @if($class->id==$student->studClassID)
-                {{ $class->className }}
-                @endif
-            @endforeach
-            </td>
-            <td>
                 <img src="https://idserver.kbtc.edu.mm/students/qrcodes/{{ $student->studQR }}"width="200px">
             </td>
             <td>
@@ -149,7 +122,7 @@
                     <a href="{{ route('students.show', $student->id) }}">Details</a> | 
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete ID-{{ $student->studCardID }} ({{ $student->studName }})?')">Delete</button>
                 </form>
             </td>
             
