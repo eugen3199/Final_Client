@@ -106,7 +106,7 @@
                 Config
             </td>
         </tr>
-        @foreach ($students as $student)
+        @foreach ($students->data as $student)
         <tr>
             <td>
                 {{ $student->studCardID }}

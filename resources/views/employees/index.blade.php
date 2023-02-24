@@ -85,7 +85,7 @@
                 Config
             </td>
         </tr>
-        @foreach ($employees as $employee)
+        @foreach ($employees->data as $employee)
         <tr>
             <td>
                 {{ $employee->empCardID }}
@@ -104,8 +104,27 @@
                     <button type="submit" onclick="return confirm('Are you sure you want to delete ID-{{ $employee->empCardID }} ({{ $employee->empName }})?')">Delete</button>
                 </form>
             </td>
-            
         </tr>
         @endforeach
+        <tr>
+            <td colspan="4">
+                @foreach($employees->links as $link)
+                    <a href="{{ url('/dashboard/employees') }}?page=@if($link->label=='&laquo; Previous'){{$page-1}}
+                    @elseif($link->label=='Next &raquo;'){{$page+1}}
+                    @else{{ $link->label }}@endif">
+
+                        <button>
+                            @if($link->label=='&laquo; Previous')
+                            Previous
+                            @elseif($link->label=='Next &raquo;')
+                            Next
+                            @else
+                            {{ $link->label }}
+                            @endif
+                        </button>
+                    </a>
+                @endforeach
+            </td>
+        </tr>
     </table>
 @endsection

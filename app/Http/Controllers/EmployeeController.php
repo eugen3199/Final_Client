@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $headers = [
             'Accept' => 'application/json',
@@ -22,7 +22,7 @@ class EmployeeController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/employees?client='.env('CLIENT'));
+        $response = $client->request('GET', '/api/employees?client='.env('CLIENT').'&page='.$request->page);
         $contents = json_decode($response->getBody());
 
         $response2 = $client->request('GET', '/api/campuses?client='.env('CLIENT'));
@@ -36,6 +36,7 @@ class EmployeeController extends Controller
 
         return view('employees.index')
                 ->with('employees', $contents)
+                ->with('page', $request->page)
                 ->with('campuses', $contents2)
                 ->with('depts', $contents3)
                 ->with('poss', $contents4);
