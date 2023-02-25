@@ -22,7 +22,7 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/students?filterClassID='.$request->filterClassID.'&client='.env('CLIENT'));
+        $response = $client->request('GET', '/api/students?filterClassID='.$request->filterClassID.'&client='.env('CLIENT').'&page='.$request->page);
         $contents = json_decode($response->getBody());
 
         $response2 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
@@ -33,6 +33,8 @@ class StudentController extends Controller
         // var_dump($contents);
         return view('students.index')
                 ->with('students', $contents)
+                ->with('page', $request->page)
+                ->with('filterClassID', $request->filterClassID)
                 ->with('classes', $contents2)
                 ->with('batches', $contents3);
     }

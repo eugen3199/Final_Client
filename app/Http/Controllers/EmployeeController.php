@@ -217,4 +217,11 @@ class EmployeeController extends Controller
         $contents = json_decode($response->getBody());
         return redirect(route('employees.index'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $blogs = Blog::where('title','like','%'.$search.'%')->orderBy('id')->paginate(6);
+        return view('blog.index',['blogs' => $blogs]);
+    }
 }

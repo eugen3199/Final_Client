@@ -80,10 +80,15 @@
             <tr>
                 <td>Class</td>
                 <td>
+                    <input type="hidden" name="page" value="1">
                     <select name="filterClassID">
                         <option value="*">All</option>
                         @foreach($classes as $class)
-                        <option value="{{ $class->id }}">{{ $class->className }}</option>
+                        <option value="{{ $class->id }}"
+                            @if($filterClassID == $class->id)
+                            selected
+                            @endif
+                            >{{ $class->className }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -101,6 +106,9 @@
             </td>
             <td>
                 Name
+            </td>
+            <td>
+                QR
             </td>
             <td>
                 Config
@@ -125,8 +133,27 @@
                     <button type="submit" onclick="return confirm('Are you sure you want to delete ID-{{ $student->studCardID }} ({{ $student->studName }})?')">Delete</button>
                 </form>
             </td>
-            
         </tr>
         @endforeach
+        <tr>
+            <td colspan="4">
+                @foreach($students->links as $link)
+                    <a href="{{ url('/dashboard/students') }}?filterClassID={{ $filterClassID }}&page=@if($link->label=='&laquo; Previous'){{$page-1}}
+                    @elseif($link->label=='Next &raquo;'){{$page+1}}
+                    @else{{ $link->label }}@endif">
+
+                        <button>
+                            @if($link->label=='&laquo; Previous')
+                            Previous
+                            @elseif($link->label=='Next &raquo;')
+                            Next
+                            @else
+                            {{ $link->label }}
+                            @endif
+                        </button>
+                    </a>
+                @endforeach
+            </td>
+        </tr>
     </table>
 @endsection

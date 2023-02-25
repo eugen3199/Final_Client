@@ -82,6 +82,9 @@
                 Name
             </td>
             <td>
+                QR
+            </td>
+            <td>
                 Config
             </td>
         </tr>
