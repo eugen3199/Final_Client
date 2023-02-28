@@ -70,7 +70,7 @@
     </form>
     <hr>
     <table>
-        <form action="{{ url('/dashboard/students') }}" method="get">
+        <form action="{{ url('/dashboard/students') }}?page=1" method="get">
             @csrf
             <tr>
                 <th>
@@ -100,13 +100,6 @@
     </table>
     <hr>
     <table border="1">
-        <tr>
-            <th colspan="4" align="right">
-                <form action="{{ route('students.index') }}" method="get">
-                    <input type="text" name="search_value"> | <input type="submit" name="submit" value="Search">
-                </form>
-            </th>
-        </tr>
         <tr>
             <td>
                 id

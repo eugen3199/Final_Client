@@ -17,12 +17,18 @@ class EmployeeController extends Controller
 
         $client = new Client([
             // "base_uri" => "https://idserver.kbtc.edu.mm",
-            // "base_uri" => "https://884bac0d-a606-4d17-9372-fd2c011ff782.mock.pstmn.io",
+            // "base_uri" => "https://465bbac7-de50-4a9e-b710-e33d4cf718d1.mock.pstmn.io",
             "base_uri" => env('BASE_URI'),
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/employees?client='.env('CLIENT').'&page='.$request->page);
+        if(isset($request->search_value)){
+            $response = $client->request('GET', '/api/employees/query?client='.env('CLIENT').'&page='.$request->page.'&search_value='.$request->search_value);
+        }
+        else{
+            $response = $client->request('GET', '/api/employees?client='.env('CLIENT').'&page='.$request->page);
+        }
+
         $contents = json_decode($response->getBody());
 
         $response2 = $client->request('GET', '/api/campuses?client='.env('CLIENT'));
@@ -218,10 +224,24 @@ class EmployeeController extends Controller
         return redirect(route('employees.index'));
     }
 
-    public function search(Request $request)
-    {
-        $search = $request->search;
-        $blogs = Blog::where('title','like','%'.$search.'%')->orderBy('id')->paginate(6);
-        return view('blog.index',['blogs' => $blogs]);
-    }
+    // public function query(Request $request)
+    // {
+    //     $search_value = $request->search_value;
+
+    //     $headers = [
+    //         'Accept' => 'application/json',
+    //         'Authorization' => 'Bearer '.Session::get('key'),
+    //     ];
+
+    //     $client = new Client([
+    //         // "base_uri" => "https://idserver.kbtc.edu.mm",
+    //         "base_uri" => "https://465bbac7-de50-4a9e-b710-e33d4cf718d1.mock.pstmn.io",
+    //         // "base_uri" => env('BASE_URI'),
+    //         "headers" => $headers
+    //     ]);
+
+    //     $response = $client->request('GET', '/api/employees/query?client='.env('CLIENT').'&search_value='.$search_value);
+
+    //     return view('employees.query',['blogs' => $blogs]);
+    // }
 }

@@ -76,8 +76,8 @@
     <table border="1">
         <tr>
             <th colspan="4" align="right">
-                <form action="{{ route('employees.index') }}" method="get">
-                    <input type="text" name="search_value"> | <input type="submit" name="submit" value="Search">
+                <form action="{{ route('employees.query') }}" method="get">
+                    <input type="text" name="search_value" value="{{ $search_value }}"> | <input type="submit" name="submit" value="Search">
                 </form>
             </th>
         </tr>

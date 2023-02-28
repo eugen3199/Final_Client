@@ -22,7 +22,13 @@ class StudentController extends Controller
             "headers" => $headers
         ]);
 
-        $response = $client->request('GET', '/api/students?filterClassID='.$request->filterClassID.'&client='.env('CLIENT').'&page='.$request->page);
+        if(isset($request->search_value)){
+            $response = $client->request('GET', '/api/students/query?filterClassID=*&client='.env('CLIENT').'&page='.$request->page.'&search_value='.$request->search_value);
+        }
+        else{
+            $response = $client->request('GET', '/api/students?filterClassID='.$request->filterClassID.'&client='.env('CLIENT').'&page='.$request->page);
+        }
+
         $contents = json_decode($response->getBody());
 
         $response2 = $client->request('GET', '/api/classes?client='.env('CLIENT'));
