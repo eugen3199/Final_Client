@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class EmployeeController extends Controller
 {
@@ -244,4 +245,52 @@ class EmployeeController extends Controller
 
     //     return view('employees.query',['blogs' => $blogs]);
     // }
+
+    public function import(Request $request)
+    {
+        // check file is present and has no problem uploading it
+        // if ($request->hasFile('image') && $request->file('photo')->isValid()) {
+        //     // get Illuminate\Http\UploadedFile instance
+        //     $image = $request->file('image');
+
+        //     // post request with attachment
+        //     Http::attach('attachment', file_get_contents($image), 'image.jpg')
+        //         ->post('example.com/v1/blog/store', $request->all());
+        // } else {
+        //     Http::post('http://example.com/v1/blog/store', $request->all());
+        // }
+
+        // $fname = $request->file->get();
+
+        // // $message = $fname;
+        // Log::debug($fname);
+        // echo"<script>console.log('".$fname."')</script>";
+
+        $headers = [
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer '.Session::get('key'),
+        ];
+
+        $client = new Client([
+            // "base_uri" => "https://idserver.kbtc.edu.mm",
+            // "base_uri" => "https://d8335347-028e-43ce-9434-d1ffc2fe44d2.mock.pstmn.io",
+            "base_uri" => env('BASE_URI'),
+            "headers" => $headers
+        ]);
+
+        $res = $client->request('POST', '/api/employees/import', [
+            'multipart' => [
+                [
+                    'name'     => 'file',
+                    'contents' => file_get_contents($request->file->getRealPath()),
+                    'filename' => $request->file->getClientOriginalName()
+                ],
+                [
+                    'name' => 'client',
+                    'contents' => env('CLIENT')
+                ]
+            ]
+        ]);
+        return redirect(route('employees.index'));
+    }
 }

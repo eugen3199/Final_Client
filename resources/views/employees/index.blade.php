@@ -73,6 +73,12 @@
         </table>
     </form>
     <hr>
+    <form action="{{ url('/dashboard/employees/import') }}" method='post' enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file">
+        <input type="submit" name="submit" value="Import">
+    </form>
+    <hr>
     <table border="1">
         <tr>
             <th colspan="4" align="right">

@@ -57,17 +57,17 @@ Route::prefix('studrelated')->group(function () {
 });
 
 Route::prefix('dashboard')->group(function () {
-    Route::resource('employees', EmployeeController::class);
-
+    
     Route::prefix('employees')->group(function () {
+        Route::post('import', [EmployeeController::class, 'import']);
         Route::post('{id}', [EmployeeController::class, 'update']);
     });
-
-    Route::resource('students', StudentController::class);
+    Route::resource('employees', EmployeeController::class);
 
     Route::prefix('students')->group(function () {
         Route::post('{id}', [StudentController::class, 'update']);
     });
+    Route::resource('students', StudentController::class);
     
     Route::resource('users', AuthController::class);
 });
