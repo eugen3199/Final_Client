@@ -292,30 +292,30 @@ class EmployeeController extends Controller
             ]
         ]);
         // return $res;
-        // return redirect(route('employees.index'));
-        if(isset($request->search_value)){
-            $response = $client->request('GET', '/api/employees/query?client='.env('CLIENT').'&page='.$request->page.'&search_value='.$request->search_value);
-        }
-        // else{
-        //     $response = $client->request('GET', '/api/employees/preview?client='.env('CLIENT').'&page='.$request->page);
-        // }
+        return redirect(route('employees.index'));
+    //     if(isset($request->search_value)){
+    //         $response = $client->request('GET', '/api/employees/query?client='.env('CLIENT').'&page='.$request->page.'&search_value='.$request->search_value);
+    //     }
+    //     // else{
+    //     //     $response = $client->request('GET', '/api/employees/preview?client='.env('CLIENT').'&page='.$request->page);
+    //     // }
 
-        $contents = json_decode($response->getBody());
+    //     $contents = json_decode($response->getBody());
 
-        $response2 = $client->request('GET', '/api/campuses?client='.env('CLIENT'));
-        $contents2 = json_decode($response2->getBody());
+    //     $response2 = $client->request('GET', '/api/campuses?client='.env('CLIENT'));
+    //     $contents2 = json_decode($response2->getBody());
 
-        $response3 = $client->request('GET', '/api/departments?client='.env('CLIENT'));
-        $contents3 = json_decode($response3->getBody());
+    //     $response3 = $client->request('GET', '/api/departments?client='.env('CLIENT'));
+    //     $contents3 = json_decode($response3->getBody());
 
-        $response4 = $client->request('GET', '/api/positions?client='.env('CLIENT'));
-        $contents4 = json_decode($response4->getBody());
+    //     $response4 = $client->request('GET', '/api/positions?client='.env('CLIENT'));
+    //     $contents4 = json_decode($response4->getBody());
 
-        return view('employees.preview')
-                ->with('employees', $contents)
-                ->with('page', $request->page)
-                ->with('campuses', $contents2)
-                ->with('depts', $contents3)
-                ->with('poss', $contents4);
+    //     return view('employees.preview')
+    //             ->with('employees', $contents)
+    //             ->with('page', $request->page)
+    //             ->with('campuses', $contents2)
+    //             ->with('depts', $contents3)
+    //             ->with('poss', $contents4);
     }
 }
